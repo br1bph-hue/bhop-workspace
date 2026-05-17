@@ -222,9 +222,43 @@
       + " with <code>tools/convert_xlsx.py</code> and reload.</p></div></div>";
   }
 
+  function assistant(d) {
+    var phasePill = A.data.phaseCfg(d).pill;
+    var keySet = A.assistant && A.assistant.getKey && !!A.assistant.getKey();
+    return '<div class="container">'
+      + "<h2>Ask the assistant</h2>"
+      + '<p class="as-note">Ask anything about the ' + esc(phasePill)
+      + ' ranking — a specific company, a vertical ("top 5 in HVAC"), a tier '
+      + '("Tier 3 companies"), a comparison ("compare Grainger and Fastenal"), '
+      + "or the methodology. Pure offline matching by default; supply your own "
+      + "Perplexity key in Settings for web-enriched answers.</p>"
+      + '<div class="as-log" id="aiAssistantLog" aria-live="polite"></div>'
+      + '<form class="as-row" id="aiAssistantForm" autocomplete="off">'
+      + '<label class="vh" for="aiAssistantInput">Ask a question</label>'
+      + '<input type="text" id="aiAssistantInput" '
+      + 'placeholder="e.g. Why is Grainger Tier 3? · Top 5 in HVAC · How is tier scored?">'
+      + '<button type="submit" class="as-btn">Ask</button>'
+      + "</form>"
+      + '<details class="as-settings" id="aiAssistantSettings">'
+      + "<summary>Settings — optional Perplexity API key</summary>"
+      + '<p class="as-settings-note">Required only for free-form web-search '
+      + "questions. Stored in this tab's session storage and cleared when you "
+      + "close the tab. Sent only to api.perplexity.ai. Never logged.</p>"
+      + '<div class="as-key-row">'
+      + '<input type="password" id="aiAssistantKeyInput" '
+      + 'placeholder="pplx-…" autocomplete="off" spellcheck="false">'
+      + '<button type="button" class="as-btn" id="aiAssistantKeySave">Save key</button>'
+      + '<button type="button" class="as-btn-ghost" id="aiAssistantKeyClear">Clear key</button>'
+      + "</div>"
+      + '<p class="as-key-status" id="aiAssistantKeyStatus">'
+      + (keySet ? "Key set for this session." : "No key set.")
+      + "</p></details>"
+      + "</div>";
+  }
+
   A.render = {
     header: header, stats: stats, controls: controls, chipsBar: chipsBar,
     table: table, cards: cards, methodology: methodology, footer: footer,
-    errorPanel: errorPanel, detailPanel: detailPanel,
+    errorPanel: errorPanel, detailPanel: detailPanel, assistant: assistant,
   };
 })(window.AITOP = window.AITOP || {});
