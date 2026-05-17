@@ -19,6 +19,7 @@
     if (d.meta && d.meta.isFixture) document.body.classList.add("is-fixture");
     $("siteHeader").innerHTML = A.render.header(d);
     $("stats").innerHTML = A.render.stats(d);
+    $("aiAssistant").innerHTML = A.render.assistant(d);
     $("methodology").innerHTML = A.render.methodology(d);
     $("siteFooter").innerHTML = A.render.footer(d);
     $("chartTitle").textContent = cfg.CHART_TITLE;
@@ -108,6 +109,85 @@
       if (host && (e.key === "Enter" || e.key === " ")) {
         e.preventDefault();
         store.toggleExpanded(host.getAttribute("data-id"));
+      }
+    });
+
+    // ---- AI assistant wiring ----
+    var assistantBusy = false;
+    function appendAssistantHtml(html, role) {
+      var log = $("aiAssistantLog");
+      if (!log) return;
+      var bubble = document.createElement("div");
+      bubble.className = "as-bubble as-" + (role || "assistant");
+      bubble.innerHTML = html;
+      log.appendChild(bubble);
+      bubble.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+    function appendUserQ(q) {
+      appendAssistantHtml('<p>' + A.format.esc(q) + '</p>', "user");
+    }
+    function setKeyStatus(text) {
+      var s = document.getElementById("aiAssistantKeyStatus");
+      if (s) s.textContent = text;
+    }
+
+    function handleAsk() {
+      if (assistantBusy) return;
+      var input = $("aiAssistantInput");
+      if (!input) return;
+      var q = input.value.trim();
+      if (!q) return;
+      input.value = "";
+      appendUserQ(q);
+
+      var res = A.assistant.answer(q, d);
+      appendAssistantHtml(res.html, "assistant");
+
+      if (res.kind === "unknown") {
+        var key = A.assistant.getKey();
+        if (!key) return;
+        // Hand off to Perplexity. Show a working state.
+        var loading = document.createElement("div");
+        loading.className = "as-bubble as-assistant";
+        loading.innerHTML = '<div class="as-loading">Searching the web with Perplexity Sonar…</div>';
+        $("aiAssistantLog").appendChild(loading);
+        loading.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        assistantBusy = true;
+        A.assistant.askLLM(q, d, key).then(function (out) {
+          loading.innerHTML = A.assistant.renderLLM(out.text, out.citations);
+        }).catch(function (err) {
+          loading.innerHTML = '<div class="as-empty">' + A.format.esc(
+            (err && err.message) || "Perplexity request failed.")
+            + " Check your API key in Settings.</div>";
+        }).then(function () { assistantBusy = false; });
+      }
+    }
+
+    var form = document.getElementById("aiAssistantForm");
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        handleAsk();
+      });
+    }
+    $("aiAssistant").addEventListener("click", function (e) {
+      var t = e.target;
+      if (!t || !t.id) return;
+      if (t.id === "aiAssistantKeySave") {
+        var input = document.getElementById("aiAssistantKeyInput");
+        var v = input ? input.value.trim() : "";
+        if (!v) { setKeyStatus("Paste a key first."); return; }
+        if (A.assistant.setKey(v)) {
+          if (input) input.value = "";
+          setKeyStatus("Key set for this session.");
+        } else {
+          setKeyStatus("Could not save the key (storage unavailable).");
+        }
+      } else if (t.id === "aiAssistantKeyClear") {
+        A.assistant.clearKey();
+        var inp = document.getElementById("aiAssistantKeyInput");
+        if (inp) inp.value = "";
+        setKeyStatus("No key set.");
       }
     });
 
