@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Top 25 — Ranking AI Maturity in Wholesale Distribution | Distribution Strategy Group</title>
+<meta name="description" content="Distribution Strategy Group's evidence-based ranking of AI maturity across North America's leading wholesale distributors. Explore by sector, maturity tier, and confidence.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="AI Top 25 — AI Maturity in Wholesale Distribution">
+<meta property="og:description" content="Who leads, how verticals compare, and what AI maturity actually looks like in wholesale distribution.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#explorer">Skip to the ranking</a>
+
+  <header id="siteHeader" class="site-header"><!-- render.header --></header>
+
+  <main>
+    <section id="stats" class="stats" aria-label="Key figures"><!-- render.stats --></section>
+
+    <section id="explorer" class="explorer" aria-label="Explore the ranking">
+      <div id="controls" class="controls"><!-- render.controls --></div>
+      <div id="chips" class="chips-bar" aria-live="polite"><!-- render.chipsBar --></div>
+      <div id="results" class="results"><!-- render.table / render.cards --></div>
+    </section>
+
+    <section id="chartSection" class="chart-section" aria-label="AI maturity by sector">
+      <div class="container">
+        <h2 id="chartTitle">AI Maturity by Distribution Sector</h2>
+        <div id="chartBox" class="chart"><!-- chart.render --></div>
+      </div>
+    </section>
+
+    <section id="methodology" class="methodology" aria-label="Methodology and maturity tiers"><!-- render.methodology --></section>
+  </main>
+
+  <footer id="siteFooter" class="site-footer"><!-- render.footer --></footer>
+
+  <!-- Load order matters: data first, then namespaced classic scripts.
+       No ES modules / fetch so the page also works opened via file://. -->
+  <script src="data.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/format.js"></script>
+  <script src="js/data-access.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/chart.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

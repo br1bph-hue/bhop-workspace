@@ -1,0 +1,21 @@
+# Raw source spreadsheets must NEVER be committed or deployed.
+# Only the filtered, allow-listed data.js is shipped.
+*.xlsx
+*.xls
+*.csv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Node
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
