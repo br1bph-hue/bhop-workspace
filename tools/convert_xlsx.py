@@ -7,10 +7,16 @@ the Research Tracker (spine), Public Index (enrichment), and Methodology sheets.
 Internal columns (Validation Outreach, Researcher, Research Notes, Profile Draft
 Link, Stage status/flags, Sources) are never read into the output.
 
+A separate vertical-source workbook supplies the clean DSG Prime Vertical per
+company (only its Company + DSG Prime Vertical columns are read; all of its
+internal Signal/Verifier/Outreach/HubSpot columns are ignored). It is joined to
+the spine by normalised company name.
+
 Usage:
     pip install --user openpyxl
     python3 tools/convert_xlsx.py AI_Top_50_Public_Index_Tracker.xlsx
     python3 tools/convert_xlsx.py <xlsx> --phase 2
+    python3 tools/convert_xlsx.py <xlsx> --verticals <v4.xlsx>
     python3 tools/convert_xlsx.py <xlsx> --deterministic   # frozen timestamp
 
 Exit codes: 0 ok | 2 openpyxl missing | 3 file/sheet/header error | 4 no rows.
@@ -22,6 +28,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 
 try:
     import openpyxl
@@ -32,7 +39,9 @@ except ModuleNotFoundError:
 SPINE_SHEET = "Research Tracker"
 ENRICH_SHEET = "Public Index"
 METHOD_SHEET = "Methodology"
+VERT_SHEET = "Private - Master Research"
 FALLBACK = "Limited public evidence"
+UNCLASSIFIED = "Unclassified"
 
 # Logical field -> case-insensitive header patterns. Resolution is by header
 # NAME (headers sit on row ~2 under a title banner), never by column letter.
@@ -62,10 +71,10 @@ ENRICH_REQUIRED = ["company", "tier"]
 # company objects (a naive substring scan would false-positive on ordinary
 # English in the allowed public narrative, e.g. "Stage 1 screening required").
 ALLOWED_COMPANY_KEYS = {
-    "id", "rank", "company", "sector", "sectorBucket", "size", "ownership",
-    "ticker", "marketCap", "tier", "tierLabel", "confidence", "signalStrength",
-    "workingDescription", "strongestSignal", "keyEvidence", "signalGaps",
-    "tableSummary", "_thin", "_enriched",
+    "id", "rank", "company", "vertical", "sector", "sectorBucket", "size",
+    "ownership", "ticker", "marketCap", "tier", "tierLabel", "confidence",
+    "signalStrength", "workingDescription", "strongestSignal", "keyEvidence",
+    "signalGaps", "tableSummary", "_thin", "_enriched",
 }
 
 # Ordered sector-bucket rules (first hit wins). Raw sector is always kept for
@@ -160,13 +169,41 @@ def clean(v):
     return FALLBACK if t.lower() in EMPTY_TOKENS else t
 
 
+def _fold(t):
+    # Strip diacritics so "Würth" == "Wurth" for name joins.
+    return "".join(c for c in unicodedata.normalize("NFKD", t)
+                   if not unicodedata.combining(c))
+
+
 def normalize_name(name):
-    t = s(name).lower()
+    t = _fold(s(name).lower())
     t = re.sub(r"\([^)]*\)", " ", t)          # drop trailing parentheticals e.g. (UNFI)
     t = t.replace("&", " and ")
     t = re.sub(r"[.,/']", " ", t)
     t = _norm_strip.sub(" ", t)
     return re.sub(r"\s+", " ", t).strip()
+
+
+# Spine alias -> vertical-source name (for the few entities the vertical
+# workbook lists under a longer legal/descriptor name with no shared
+# parenthetical). Explicit + auditable; avoids risky fuzzy matching.
+VERTICAL_ALIASES = {
+    "crescent electric": "crescent electric supply",
+    "dakota supply": "dakota supply group",
+    "adi global": "adi global distribution",
+}
+
+
+def name_keys(name):
+    """All normalised lookup keys for a vertical-source row: the full name
+    plus any inner parenthetical alias (handles 'Border States Industries
+    (Border States Electric)' and 'Parts Town (Parts Town Unlimited)')."""
+    keys = {normalize_name(name)}
+    for inner in re.findall(r"\(([^)]*)\)", s(name)):
+        k = normalize_name(inner)
+        if k:
+            keys.add(k)
+    return {k for k in keys if k}
 
 
 def sector_bucket(raw):
@@ -239,6 +276,59 @@ def get(cells, idx, field):
 
 
 # --------------------------------------------------------------------------- #
+def build_vertical_map(path):
+    """name -> clean DSG Prime Vertical, from the vertical-source workbook.
+    ONLY the Company and DSG Prime Vertical columns are read; every internal
+    column in that workbook is ignored."""
+    wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
+    if VERT_SHEET not in wb.sheetnames:
+        die(3, "Vertical source '%s': sheet '%s' missing. Sheets: %s"
+            % (os.path.basename(path), VERT_SHEET, wb.sheetnames))
+    ws = wb[VERT_SHEET]
+    rows = list(ws.iter_rows(values_only=True))
+    hdr = None
+    for i, r in enumerate(rows[:10]):
+        low = [s(c).lower() for c in r]
+        if any(x == "company" or x.startswith("company") for x in low):
+            hdr = (i, [s(c) for c in r])
+            break
+    if hdr is None:
+        die(3, "Vertical source: header row not found in '%s'." % VERT_SHEET)
+    hi, headers = hdr
+    cco = cver = None
+    for ci, h in enumerate(headers):
+        hl = h.lower()
+        if cco is None and (hl == "company" or hl.startswith("company name")):
+            cco = ci
+        # "DSG Prime Vertical" — not "Vertical Notes" / "Company Overview".
+        if cver is None and "prime vertical" in hl and "note" not in hl \
+                and "overview" not in hl:
+            cver = ci
+    if cco is None or cver is None:
+        die(3, "Vertical source: need Company + 'DSG Prime Vertical' columns; "
+            "headers: %s" % headers)
+    vmap = {}
+    for r in rows[hi + 1:]:
+        cells = list(r)
+        co = s(cells[cco]) if cco < len(cells) else ""
+        ver = s(cells[cver]) if cver < len(cells) else ""
+        if not co or not ver or ver.lower() in EMPTY_TOKENS:
+            continue
+        for k in name_keys(co):
+            vmap.setdefault(k, ver)
+    wb.close()
+    return vmap
+
+
+def lookup_vertical(name, vmap):
+    if not vmap:
+        return None
+    key = normalize_name(name)
+    return (vmap.get(key) or vmap.get(VERTICAL_ALIASES.get(key, "\0"))
+            or None)
+
+
+# --------------------------------------------------------------------------- #
 def build_enrich_map(ws):
     hr, headers = find_header_row(ws)
     if hr is None:
@@ -275,12 +365,12 @@ def build_enrich_map(ws):
     return pmap, names
 
 
-def build_companies(ws, pmap):
+def build_companies(ws, pmap, vmap):
     hr, headers = find_header_row(ws)
     if hr is None:
         die(3, "Sheet '%s': header row not found." % SPINE_SHEET)
     idx = resolve_columns(headers, SPINE_REQUIRED, SPINE_SHEET)
-    companies, dropped, enriched_keys = [], [], set()
+    companies, dropped, enriched_keys, no_vert = [], [], set(), []
     for row in ws.iter_rows(min_row=hr + 1, values_only=True):
         cells = list(row)
         if not any(s(c) for c in cells) or is_banner(cells):
@@ -315,11 +405,16 @@ def build_companies(ws, pmap):
         ticker_t = ticker == FALLBACK
         primary = next((x for x in (wd, ss, ke) if x and x != FALLBACK), FALLBACK)
         tier = parse_tier(get(cells, idx, "tier"))
+        vert = lookup_vertical(name, vmap)
+        if vmap and not vert:
+            no_vert.append(name)
+        vertical = vert or (UNCLASSIFIED if vmap else sector_bucket(raw_sector))
 
         companies.append({
             "id": "co-%04d" % rank,
             "rank": rank,
             "company": name,
+            "vertical": vertical,
             "sector": raw_sector,
             "sectorBucket": sector_bucket(raw_sector),
             "size": clean(get(cells, idx, "size")),
@@ -342,7 +437,7 @@ def build_companies(ws, pmap):
             "_enriched": bool(enr),
         })
     companies.sort(key=lambda c: c["rank"])
-    return companies, dropped, enriched_keys
+    return companies, dropped, enriched_keys, no_vert
 
 
 # --------------------------------------------------------------------------- #
@@ -405,17 +500,17 @@ def aggregate(companies):
             if c["tier"]:
                 by[str(c["tier"])] = by.get(str(c["tier"]), 0) + 1
         return {"companies": len(sub), "byTier": by,
-                "sectorCount": len({c["sectorBucket"] for c in sub})}
+                "verticalCount": len({c["vertical"] for c in sub})}
 
     by_all = {}
     for c in companies:
         if c["tier"]:
             by_all[str(c["tier"])] = by_all.get(str(c["tier"]), 0) + 1
 
-    sect = {}
+    vert = {}
     for c in ranked:
-        d = sect.setdefault(c["sectorBucket"], {"sector": c["sectorBucket"],
-                                                "total": 0, "byTier": {}})
+        d = vert.setdefault(c["vertical"], {"vertical": c["vertical"],
+                                            "total": 0, "byTier": {}})
         d["total"] += 1
         if c["tier"]:
             k = str(c["tier"])
@@ -426,8 +521,8 @@ def aggregate(companies):
         "byTierAll": by_all,
         "phase1": block(25),
         "phase2": block(50),
-        "sectorCounts": sorted(sect.values(),
-                               key=lambda x: (-x["total"], x["sector"])),
+        "verticalCounts": sorted(vert.values(),
+                                 key=lambda x: (-x["total"], x["vertical"])),
     }
 
 
@@ -449,7 +544,7 @@ def stat_strip(agg, companies, tier_meta):
         "phase1": [
             {"label": "Companies Ranked", "value": str(len(p1)),
              "sub": "of %d in the full index" % agg["rankedTotal"]},
-            {"label": "Distribution Sectors", "value": str(agg["phase1"]["sectorCount"]),
+            {"label": "Distribution Verticals", "value": str(agg["phase1"]["verticalCount"]),
              "sub": "represented in the Top 25"},
             {"label": "Peak Maturity", "value": pv, "sub": ps},
             {"label": "High-Confidence Profiles", "value": str(high1),
@@ -471,19 +566,34 @@ def main():
     ap.add_argument("--phase", type=int, choices=(1, 2), default=1)
     ap.add_argument("--out", default=os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data.js"))
+    ap.add_argument("--verticals", help="vertical-source .xlsx (clean DSG "
+                    "Prime Vertical column). Auto-detected from repo root if "
+                    "a *vertical*.xlsx is present.")
     ap.add_argument("--deterministic", action="store_true",
                     help="freeze generatedAt to the xlsx mtime (idempotent)")
     args = ap.parse_args()
 
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     path = args.xlsx
     if not path:
-        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         cands = sorted(glob.glob(os.path.join(root, "*.xlsx")))
         if not cands:
             die(3, "No xlsx given and none found in repo root.")
-        path = cands[0]
+        # Prefer the Public Index tracker as the spine, not the vertical file.
+        spine = [c for c in cands if "vertical" not in os.path.basename(c).lower()]
+        path = (spine or cands)[0]
     if not os.path.isfile(path):
         die(3, "xlsx not found: %s" % os.path.abspath(path))
+
+    vpath = args.verticals
+    if not vpath:
+        vc = sorted(g for g in glob.glob(os.path.join(root, "*.xlsx"))
+                    if "vertical" in os.path.basename(g).lower()
+                    and os.path.abspath(g) != os.path.abspath(path))
+        vpath = vc[0] if vc else None
+    if vpath and not os.path.isfile(vpath):
+        die(3, "vertical source not found: %s" % os.path.abspath(vpath))
+    vmap = build_vertical_map(vpath) if vpath else {}
 
     wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
     for need in (SPINE_SHEET, ENRICH_SHEET, METHOD_SHEET):
@@ -491,7 +601,8 @@ def main():
             die(3, "Sheet '%s' missing. Sheets: %s" % (need, wb.sheetnames))
 
     pmap, pi_names = build_enrich_map(wb[ENRICH_SHEET])
-    companies, dropped, enriched_keys = build_companies(wb[SPINE_SHEET], pmap)
+    companies, dropped, enriched_keys, no_vert = build_companies(
+        wb[SPINE_SHEET], pmap, vmap)
     if not companies:
         die(4, "Zero shippable company rows.")
     method = parse_methodology(wb[METHOD_SHEET])
@@ -506,10 +617,11 @@ def main():
     else:
         gen = _dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
 
-    sectors_present = [x["sector"] for x in agg["sectorCounts"]]
+    verticals_present = [x["vertical"] for x in agg["verticalCounts"]]
     data = {
         "meta": {"generatedAt": gen, "sourceFile": os.path.basename(path),
                  "sheets": [SPINE_SHEET, ENRICH_SHEET, METHOD_SHEET],
+                 "verticalSource": os.path.basename(vpath) if vpath else None,
                  "isFixture": False},
         "phase": args.phase,
         "phaseConfig": {
@@ -517,7 +629,7 @@ def main():
             "2": {"maxRank": 50, "pill": "FULL TOP 50", "statCards": 6}},
         "tierMeta": tier_meta,
         "methodology": method,
-        "sectors": sectors_present,
+        "verticals": verticals_present,
         "aggregates": agg,
         "statStrip": strip,
         "companies": companies,
@@ -573,8 +685,12 @@ def main():
     print("  phase 2 (rank<=50)            : %d  byTier=%s"
           % (agg["phase2"]["companies"], agg["phase2"]["byTier"]))
     print("  tier distribution (all)       : %s" % agg["byTierAll"])
-    print("  sector buckets                : %d  %s"
-          % (len(sectors_present), sectors_present))
+    print("  verticals (DSG Prime)         : %d  %s"
+          % (len(verticals_present), verticals_present))
+    print("  vertical source               : %s"
+          % (os.path.basename(vpath) if vpath else "(none — sector fallback)"))
+    print("  companies w/o vertical match  : %d  %s"
+          % (len(no_vert), no_vert))
     print("  enriched from Public Index    : %d / %d spine companies"
           % (len(enriched_keys), len(companies)))
     print("  unmatched Public Index names  : %d  %s"

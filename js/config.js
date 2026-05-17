@@ -15,7 +15,7 @@ window.AITOP.config = {
          "intelligence — who leads, how verticals compare, and what AI maturity " +
          "actually looks like.",
 
-  CHART_TITLE: "AI Maturity by Distribution Sector",
+  CHART_TITLE: "AI Maturity by Distribution Vertical",
   METHOD_TITLE: "Methodology & Maturity Tiers",
   METHOD_NOTE: "Ranking reflects a composite score across three independent " +
                "industry source models. Maturity tier is a separate, evidence-" +

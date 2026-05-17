@@ -12,6 +12,7 @@ window.DASHBOARD_DATA = {
       "Public Index",
       "Methodology"
     ],
+    "verticalSource": "AI_Top_50_Rebuilt_v4_with_vertical_column.xlsx",
     "isFixture": false
   },
   "phase": 1,
@@ -130,22 +131,20 @@ window.DASHBOARD_DATA = {
       }
     ]
   },
-  "sectors": [
+  "verticals": [
+    "Industrial",
     "Electrical",
-    "Industrial / MRO",
-    "HVAC / Plumbing",
     "Foodservice",
     "Building Materials",
-    "Electronics / Tech",
-    "Healthcare",
-    "Auto",
-    "Fasteners",
-    "Gases / Welding",
+    "Electronics & Technology",
+    "HVAC",
+    "Medical Supplies",
+    "Plumbing",
+    "Automotive Parts",
+    "Industrial Gases",
+    "Jan/San",
     "Metals",
-    "Multi-Vertical",
-    "Packaging",
-    "Security",
-    "Specialty"
+    "Pool & Outdoor"
   ],
   "aggregates": {
     "universeTotal": 54,
@@ -160,7 +159,7 @@ window.DASHBOARD_DATA = {
         "3": 15,
         "2": 8
       },
-      "sectorCount": 8
+      "verticalCount": 7
     },
     "phase2": {
       "companies": 50,
@@ -168,42 +167,34 @@ window.DASHBOARD_DATA = {
         "3": 31,
         "2": 13
       },
-      "sectorCount": 15
+      "verticalCount": 13
     },
-    "sectorCounts": [
+    "verticalCounts": [
       {
-        "sector": "Electrical",
-        "total": 9,
+        "vertical": "Industrial",
+        "total": 12,
         "byTier": {
           "3": 6,
-          "2": 2
+          "2": 5
         }
       },
       {
-        "sector": "Industrial / MRO",
-        "total": 9,
+        "vertical": "Electrical",
+        "total": 11,
         "byTier": {
-          "3": 5,
-          "2": 3
+          "3": 6,
+          "2": 4
         }
       },
       {
-        "sector": "HVAC / Plumbing",
-        "total": 7,
-        "byTier": {
-          "3": 3,
-          "2": 2
-        }
-      },
-      {
-        "sector": "Foodservice",
+        "vertical": "Foodservice",
         "total": 5,
         "byTier": {
           "3": 5
         }
       },
       {
-        "sector": "Building Materials",
+        "vertical": "Building Materials",
         "total": 4,
         "byTier": {
           "3": 3,
@@ -211,70 +202,63 @@ window.DASHBOARD_DATA = {
         }
       },
       {
-        "sector": "Electronics / Tech",
-        "total": 3,
+        "vertical": "Electronics & Technology",
+        "total": 4,
         "byTier": {
           "2": 1,
-          "3": 2
+          "3": 3
         }
       },
       {
-        "sector": "Healthcare",
+        "vertical": "HVAC",
+        "total": 3,
+        "byTier": {
+          "3": 1
+        }
+      },
+      {
+        "vertical": "Medical Supplies",
         "total": 3,
         "byTier": {
           "3": 3
         }
       },
       {
-        "sector": "Auto",
-        "total": 2,
+        "vertical": "Plumbing",
+        "total": 3,
         "byTier": {
-          "3": 1,
+          "3": 2,
           "2": 1
         }
       },
       {
-        "sector": "Fasteners",
-        "total": 2,
-        "byTier": {
-          "3": 2
-        }
-      },
-      {
-        "sector": "Gases / Welding",
-        "total": 1,
-        "byTier": {
-          "2": 1
-        }
-      },
-      {
-        "sector": "Metals",
+        "vertical": "Automotive Parts",
         "total": 1,
         "byTier": {
           "3": 1
         }
       },
       {
-        "sector": "Multi-Vertical",
+        "vertical": "Industrial Gases",
         "total": 1,
         "byTier": {
           "2": 1
         }
       },
       {
-        "sector": "Packaging",
+        "vertical": "Jan/San",
         "total": 1,
         "byTier": {}
       },
       {
-        "sector": "Security",
+        "vertical": "Metals",
         "total": 1,
         "byTier": {
-          "2": 1
+          "3": 1
         }
       },
       {
-        "sector": "Specialty",
+        "vertical": "Pool & Outdoor",
         "total": 1,
         "byTier": {}
       }
@@ -288,8 +272,8 @@ window.DASHBOARD_DATA = {
         "sub": "of 50 in the full index"
       },
       {
-        "label": "Distribution Sectors",
-        "value": "8",
+        "label": "Distribution Verticals",
+        "value": "7",
         "sub": "represented in the Top 25"
       },
       {
@@ -321,6 +305,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0001",
       "rank": 1,
       "company": "W.W. Grainger",
+      "vertical": "Industrial",
       "sector": "Industrial / MRO",
       "sectorBucket": "Industrial / MRO",
       "size": "Enterprise",
@@ -351,6 +336,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0002",
       "rank": 2,
       "company": "Wesco International",
+      "vertical": "Electrical",
       "sector": "Electrical / Data Center",
       "sectorBucket": "Electrical",
       "size": "Enterprise",
@@ -381,6 +367,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0003",
       "rank": 3,
       "company": "Ferguson Enterprises",
+      "vertical": "Plumbing",
       "sector": "HVAC / Plumbing",
       "sectorBucket": "HVAC / Plumbing",
       "size": "Enterprise",
@@ -411,6 +398,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0004",
       "rank": 4,
       "company": "Fastenal",
+      "vertical": "Industrial",
       "sector": "Fasteners / Industrial",
       "sectorBucket": "Fasteners",
       "size": "Enterprise",
@@ -441,6 +429,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0005",
       "rank": 5,
       "company": "Sonepar",
+      "vertical": "Electrical",
       "sector": "Electrical",
       "sectorBucket": "Electrical",
       "size": "Enterprise",
@@ -471,6 +460,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0006",
       "rank": 6,
       "company": "Graybar Electric",
+      "vertical": "Electrical",
       "sector": "Electrical",
       "sectorBucket": "Electrical",
       "size": "Enterprise",
@@ -501,6 +491,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0007",
       "rank": 7,
       "company": "Builders FirstSource",
+      "vertical": "Building Materials",
       "sector": "Building Materials",
       "sectorBucket": "Building Materials",
       "size": "Enterprise",
@@ -531,6 +522,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0008",
       "rank": 8,
       "company": "MSC Industrial Direct",
+      "vertical": "Industrial",
       "sector": "Industrial / MRO",
       "sectorBucket": "Industrial / MRO",
       "size": "Enterprise",
@@ -561,6 +553,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0009",
       "rank": 9,
       "company": "Motion Industries",
+      "vertical": "Industrial",
       "sector": "Industrial",
       "sectorBucket": "Industrial / MRO",
       "size": "Enterprise",
@@ -591,6 +584,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0010",
       "rank": 10,
       "company": "Border States Electric",
+      "vertical": "Electrical",
       "sector": "Electrical",
       "sectorBucket": "Electrical",
       "size": "Enterprise",
@@ -621,6 +615,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0011",
       "rank": 11,
       "company": "Core & Main",
+      "vertical": "Building Materials",
       "sector": "Building Materials / Waterworks",
       "sectorBucket": "HVAC / Plumbing",
       "size": "Enterprise",
@@ -651,6 +646,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0012",
       "rank": 12,
       "company": "Winsupply",
+      "vertical": "Plumbing",
       "sector": "HVAC / Plumbing / Multi-Vertical",
       "sectorBucket": "HVAC / Plumbing",
       "size": "Enterprise",
@@ -681,6 +677,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0013",
       "rank": 13,
       "company": "ABC Supply",
+      "vertical": "Building Materials",
       "sector": "Building Materials / Roofing",
       "sectorBucket": "Building Materials",
       "size": "Enterprise",
@@ -711,6 +708,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0014",
       "rank": 14,
       "company": "Van Meter Inc.",
+      "vertical": "Electrical",
       "sector": "Electrical",
       "sectorBucket": "Electrical",
       "size": "Mid-Market",
@@ -741,6 +739,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0015",
       "rank": 15,
       "company": "Rexel USA",
+      "vertical": "Electrical",
       "sector": "Electrical",
       "sectorBucket": "Electrical",
       "size": "Enterprise",
@@ -771,6 +770,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0016",
       "rank": 16,
       "company": "HD Supply",
+      "vertical": "Industrial",
       "sector": "Building Materials / MRO",
       "sectorBucket": "Building Materials",
       "size": "Enterprise",
@@ -801,6 +801,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0017",
       "rank": 17,
       "company": "Watsco",
+      "vertical": "HVAC",
       "sector": "HVACR",
       "sectorBucket": "HVAC / Plumbing",
       "size": "Enterprise",
@@ -831,6 +832,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0018",
       "rank": 18,
       "company": "Airgas",
+      "vertical": "Industrial Gases",
       "sector": "Gases / Welding",
       "sectorBucket": "Gases / Welding",
       "size": "Enterprise",
@@ -861,6 +863,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0019",
       "rank": 19,
       "company": "Crescent Electric",
+      "vertical": "Electrical",
       "sector": "Electrical",
       "sectorBucket": "Electrical",
       "size": "Mid-Market",
@@ -891,6 +894,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0020",
       "rank": 20,
       "company": "Werner Electric Supply",
+      "vertical": "Electrical",
       "sector": "Electrical",
       "sectorBucket": "Electrical",
       "size": "Mid-Market",
@@ -921,6 +925,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0021",
       "rank": 21,
       "company": "Dakota Supply",
+      "vertical": "Electrical",
       "sector": "Multi-Vertical",
       "sectorBucket": "Multi-Vertical",
       "size": "Mid-Market",
@@ -951,6 +956,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0022",
       "rank": 22,
       "company": "ScanSource",
+      "vertical": "Electronics & Technology",
       "sector": "Technology / Electronics",
       "sectorBucket": "Electronics / Tech",
       "size": "Enterprise",
@@ -981,6 +987,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0023",
       "rank": 23,
       "company": "The Kendall Group",
+      "vertical": "Electrical",
       "sector": "Electrical",
       "sectorBucket": "Electrical",
       "size": "Mid-Market",
@@ -1011,6 +1018,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0024",
       "rank": 24,
       "company": "Kimball Midwest",
+      "vertical": "Industrial",
       "sector": "Industrial / MRO",
       "sectorBucket": "Industrial / MRO",
       "size": "Mid-Market",
@@ -1041,6 +1049,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0025",
       "rank": 25,
       "company": "Blackhawk Industrial",
+      "vertical": "Industrial",
       "sector": "Industrial / MRO",
       "sectorBucket": "Industrial / MRO",
       "size": "Mid-Market",
@@ -1071,6 +1080,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0026",
       "rank": 26,
       "company": "Applied Industrial Technologies",
+      "vertical": "Industrial",
       "sector": "Industrial / Fluid Power",
       "sectorBucket": "Industrial / MRO",
       "size": "Enterprise",
@@ -1101,6 +1111,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0027",
       "rank": 27,
       "company": "Parts Town Unlimited",
+      "vertical": "Foodservice",
       "sector": "Foodservice Equipment",
       "sectorBucket": "Foodservice",
       "size": "Enterprise",
@@ -1131,6 +1142,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0028",
       "rank": 28,
       "company": "McKesson",
+      "vertical": "Medical Supplies",
       "sector": "Healthcare / Pharma",
       "sectorBucket": "Healthcare",
       "size": "Enterprise",
@@ -1161,6 +1173,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0029",
       "rank": 29,
       "company": "McLane Company",
+      "vertical": "Foodservice",
       "sector": "Foodservice / Logistics",
       "sectorBucket": "Foodservice",
       "size": "Enterprise",
@@ -1191,6 +1204,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0030",
       "rank": 30,
       "company": "Lawson Products",
+      "vertical": "Industrial",
       "sector": "Fasteners / MRO",
       "sectorBucket": "Fasteners",
       "size": "Mid-Market",
@@ -1221,6 +1235,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0031",
       "rank": 31,
       "company": "Cardinal Health",
+      "vertical": "Medical Supplies",
       "sector": "Healthcare / Pharma",
       "sectorBucket": "Healthcare",
       "size": "Enterprise",
@@ -1251,6 +1266,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0032",
       "rank": 32,
       "company": "Global Industrial",
+      "vertical": "Industrial",
       "sector": "Industrial",
       "sectorBucket": "Industrial / MRO",
       "size": "Enterprise",
@@ -1281,6 +1297,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0033",
       "rank": 33,
       "company": "Arrow Electronics",
+      "vertical": "Electronics & Technology",
       "sector": "Electronics",
       "sectorBucket": "Electronics / Tech",
       "size": "Enterprise",
@@ -1311,6 +1328,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0034",
       "rank": 34,
       "company": "Sysco",
+      "vertical": "Foodservice",
       "sector": "Foodservice",
       "sectorBucket": "Foodservice",
       "size": "Enterprise",
@@ -1341,6 +1359,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0035",
       "rank": 35,
       "company": "DXP Enterprises",
+      "vertical": "Industrial",
       "sector": "Industrial / Pumps",
       "sectorBucket": "Industrial / MRO",
       "size": "Enterprise",
@@ -1371,6 +1390,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0036",
       "rank": 36,
       "company": "Avnet",
+      "vertical": "Electronics & Technology",
       "sector": "Electronics",
       "sectorBucket": "Electronics / Tech",
       "size": "Enterprise",
@@ -1401,6 +1421,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0037",
       "rank": 37,
       "company": "QXO Inc.",
+      "vertical": "Building Materials",
       "sector": "Building Materials",
       "sectorBucket": "Building Materials",
       "size": "Enterprise",
@@ -1431,6 +1452,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0038",
       "rank": 38,
       "company": "US Foods",
+      "vertical": "Foodservice",
       "sector": "Foodservice",
       "sectorBucket": "Foodservice",
       "size": "Enterprise",
@@ -1461,6 +1483,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0039",
       "rank": 39,
       "company": "Hajoca Corporation",
+      "vertical": "Plumbing",
       "sector": "HVAC / Plumbing",
       "sectorBucket": "HVAC / Plumbing",
       "size": "Enterprise",
@@ -1491,6 +1514,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0040",
       "rank": 40,
       "company": "RS Group",
+      "vertical": "Electronics & Technology",
       "sector": "Industrial / MRO",
       "sectorBucket": "Industrial / MRO",
       "size": "Enterprise",
@@ -1521,6 +1545,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0041",
       "rank": 41,
       "company": "Henry Schein",
+      "vertical": "Medical Supplies",
       "sector": "Healthcare / Dental",
       "sectorBucket": "Healthcare",
       "size": "Enterprise",
@@ -1551,6 +1576,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0042",
       "rank": 42,
       "company": "Famous Supply",
+      "vertical": "HVAC",
       "sector": "HVAC / Plumbing",
       "sectorBucket": "HVAC / Plumbing",
       "size": "Mid-Market",
@@ -1581,6 +1607,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0043",
       "rank": 43,
       "company": "Uline",
+      "vertical": "Jan/San",
       "sector": "Packaging / General Line",
       "sectorBucket": "Packaging",
       "size": "Enterprise",
@@ -1611,6 +1638,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0044",
       "rank": 44,
       "company": "United Natural Foods (UNFI)",
+      "vertical": "Foodservice",
       "sector": "Foodservice / Natural Foods",
       "sectorBucket": "Foodservice",
       "size": "Enterprise",
@@ -1641,6 +1669,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0045",
       "rank": 45,
       "company": "FleetPride",
+      "vertical": "Automotive Parts",
       "sector": "Auto Aftermarket",
       "sectorBucket": "Auto",
       "size": "Enterprise",
@@ -1671,6 +1700,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0046",
       "rank": 46,
       "company": "ADI Global",
+      "vertical": "Electrical",
       "sector": "Security / Low Voltage",
       "sectorBucket": "Security",
       "size": "Enterprise",
@@ -1701,6 +1731,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0047",
       "rank": 47,
       "company": "Genuine Parts Company (GPC)",
+      "vertical": "Industrial",
       "sector": "Auto / Industrial",
       "sectorBucket": "Auto",
       "size": "Enterprise",
@@ -1731,6 +1762,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0048",
       "rank": 48,
       "company": "F.W. Webb",
+      "vertical": "HVAC",
       "sector": "HVAC / Plumbing",
       "sectorBucket": "HVAC / Plumbing",
       "size": "Mid-Market",
@@ -1761,6 +1793,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0049",
       "rank": 49,
       "company": "Pool Corporation",
+      "vertical": "Pool & Outdoor",
       "sector": "Specialty / Pool",
       "sectorBucket": "Specialty",
       "size": "Enterprise",
@@ -1791,6 +1824,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0050",
       "rank": 50,
       "company": "Ryerson",
+      "vertical": "Metals",
       "sector": "Metals",
       "sectorBucket": "Metals",
       "size": "Enterprise",
@@ -1821,6 +1855,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0051",
       "rank": 51,
       "company": "Turtle & Hughes",
+      "vertical": "Electrical",
       "sector": "Electrical / Industrial",
       "sectorBucket": "Electrical",
       "size": "Mid-Market",
@@ -1851,6 +1886,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0052",
       "rank": 52,
       "company": "Brenntag North America",
+      "vertical": "Chemicals",
       "sector": "Chemical / Ingredients",
       "sectorBucket": "Chemicals",
       "size": "Enterprise",
@@ -1881,6 +1917,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0053",
       "rank": 53,
       "company": "Würth Industry North America",
+      "vertical": "Industrial",
       "sector": "Industrial / MRO / C-Parts",
       "sectorBucket": "Industrial / MRO",
       "size": "Enterprise",
@@ -1911,6 +1948,7 @@ window.DASHBOARD_DATA = {
       "id": "co-0054",
       "rank": 54,
       "company": "Veritiv Operating Company",
+      "vertical": "Jan/San",
       "sector": "Packaging / Facility / Print",
       "sectorBucket": "Packaging",
       "size": "Enterprise",

@@ -52,7 +52,7 @@
     }
     return {
       tiers: tiers,
-      sectors: facet("sectorBucket"),
+      verticals: facet("vertical"),
       ownership: facet("ownership"),
       confidence: facet("confidence"),
     };

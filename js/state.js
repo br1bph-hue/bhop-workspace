@@ -5,8 +5,8 @@
   function createStore() {
     var subs = [];
     var state = {
-      filters: { tiers: {}, sectors: {}, ownership: {}, confidence: {}, search: "" },
-      sort: "rank",            // rank | company | tier | sector
+      filters: { tiers: {}, verticals: {}, ownership: {}, confidence: {}, search: "" },
+      sort: "rank",            // rank | company | tier | vertical
       expandedId: null,
       viewMode: "table",       // table | cards
     };
@@ -26,12 +26,12 @@
       state.expandedId = state.expandedId === id ? null : id; emit();
     }
     function clearAll() {
-      state.filters = { tiers: {}, sectors: {}, ownership: {}, confidence: {}, search: "" };
+      state.filters = { tiers: {}, verticals: {}, ownership: {}, confidence: {}, search: "" };
       state.expandedId = null; emit();
     }
     function activeCount() {
       var f = state.filters, n = f.search ? 1 : 0;
-      ["tiers", "sectors", "ownership", "confidence"].forEach(function (k) {
+      ["tiers", "verticals", "ownership", "confidence"].forEach(function (k) {
         n += Object.keys(f[k]).length;
       });
       return n;

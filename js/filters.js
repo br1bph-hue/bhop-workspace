@@ -6,7 +6,7 @@
 
   function applyFilters(companies, filters) {
     var tiers = selected(filters.tiers),
-        sectors = selected(filters.sectors),
+        verticals = selected(filters.verticals),
         own = selected(filters.ownership),
         conf = selected(filters.confidence),
         q = filters.search.trim().toLowerCase();
@@ -16,11 +16,11 @@
         var tv = c.tier ? String(c.tier) : "0";
         if (tiers.indexOf(tv) === -1) return false;
       }
-      if (sectors.length && sectors.indexOf(c.sectorBucket) === -1) return false;
+      if (verticals.length && verticals.indexOf(c.vertical) === -1) return false;
       if (own.length && own.indexOf(c.ownership) === -1) return false;
       if (conf.length && conf.indexOf(c.confidence) === -1) return false;
       if (q) {
-        var hay = (c.company + " " + c.sector + " " + c.sectorBucket + " "
+        var hay = (c.company + " " + c.vertical + " " + c.sector + " "
           + c.tableSummary + " " + c.workingDescription).toLowerCase();
         if (hay.indexOf(q) === -1) return false;
       }
@@ -32,9 +32,9 @@
     var r = rows.slice();
     if (sort === "company") {
       r.sort(function (a, b) { return a.company.localeCompare(b.company); });
-    } else if (sort === "sector") {
+    } else if (sort === "vertical") {
       r.sort(function (a, b) {
-        return a.sectorBucket.localeCompare(b.sectorBucket) || a.rank - b.rank;
+        return a.vertical.localeCompare(b.vertical) || a.rank - b.rank;
       });
     } else if (sort === "tier") {
       // Strongest maturity first; unrated last; rank as tiebreaker.
@@ -53,7 +53,7 @@
       chips.push({ facet: "tiers", value: t,
         label: t === "0" ? "Unrated" : "T" + t + " · " + (tierMeta[t] || {}).label });
     });
-    ["sectors", "ownership", "confidence"].forEach(function (f) {
+    ["verticals", "ownership", "confidence"].forEach(function (f) {
       Object.keys(filters[f]).forEach(function (v) {
         chips.push({ facet: f, value: v, label: v });
       });

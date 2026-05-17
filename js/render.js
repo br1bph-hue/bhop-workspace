@@ -49,19 +49,19 @@
     return '<div class="container">'
       + '<div class="ctrl-row">'
       + checkGroup("tiers", facets.tiers, st.filters.tiers, "Maturity tier")
-      + checkGroup("sectors", facets.sectors, st.filters.sectors, "Distribution sector")
+      + checkGroup("verticals", facets.verticals, st.filters.verticals, "Distribution vertical")
       + "</div><div class=\"ctrl-row\">"
       + checkGroup("ownership", facets.ownership, st.filters.ownership, "Ownership")
       + checkGroup("confidence", facets.confidence, st.filters.confidence, "Confidence")
       + '<div class="ctrl-tools">'
       + '<label class="srch"><span class="vh">Search companies</span>'
       + '<input type="search" id="searchInput" placeholder="Search company, '
-      + 'sector, or AI signal…" value="' + esc(st.filters.search) + '"></label>'
+      + 'vertical, or AI signal…" value="' + esc(st.filters.search) + '"></label>'
       + '<label class="sortbox"><span class="vh">Sort</span>'
       + '<select id="sortSelect">'
       + opt("rank", "Sort: Rank", st.sort) + opt("tier", "Sort: Maturity", st.sort)
       + opt("company", "Sort: Company A–Z", st.sort)
-      + opt("sector", "Sort: Sector", st.sort) + "</select></label>"
+      + opt("vertical", "Sort: Vertical", st.sort) + "</select></label>"
       + "</div></div></div>";
   }
   function opt(v, label, cur) {
@@ -113,6 +113,7 @@
       + fact("Market cap", c.marketCap, c._thin.marketCap)
       + fact("Ticker", c.ticker, c._thin.ticker)
       + fact("Ownership", c.ownership)
+      + fact("DSG vertical", c.vertical)
       + fact("Sector", c.sector)
       + "</dl>"
       + block("Signal gaps / watch-outs", c.signalGaps)
@@ -132,7 +133,7 @@
         + '<td class="c-rank">' + esc(c.rank) + "</td>"
         + '<td class="c-co"><span class="co-name">' + esc(c.company) + "</span>"
         + fmt.ownershipBadge(c.ownership) + "</td>"
-        + '<td class="c-sec">' + esc(c.sector) + "</td>"
+        + '<td class="c-sec">' + esc(c.vertical) + "</td>"
         + '<td class="c-tier">' + fmt.tierBadge(c.tier, d.tierMeta) + "</td>"
         + '<td class="c-conf">' + esc(c.confidence) + "</td>"
         + '<td class="c-sum">' + esc(c.tableSummary) + "</td>"
@@ -144,7 +145,7 @@
       return tr + det;
     }).join("");
     return '<div class="container"><table class="grid"><thead><tr>'
-      + "<th>Rank</th><th>Company</th><th>Sector</th><th>Maturity tier</th>"
+      + "<th>Rank</th><th>Company</th><th>Vertical</th><th>Maturity tier</th>"
       + "<th>Conf.</th><th>AI signal summary</th><th><span class=\"vh\">Detail</span></th>"
       + "</tr></thead><tbody>" + body + "</tbody></table></div>";
   }
@@ -160,7 +161,7 @@
         + '</span>' + fmt.tierBadge(c.tier, d.tierMeta) + "</div>"
         + '<div class="card-co">' + esc(c.company) + " "
         + fmt.ownershipBadge(c.ownership) + "</div>"
-        + '<div class="card-meta">' + esc(c.sector) + " · "
+        + '<div class="card-meta">' + esc(c.vertical) + " · "
         + esc(c.confidence) + " confidence</div>"
         + '<p class="card-sum">' + esc(c.tableSummary) + "</p>"
         + (open ? detailPanel(c, d) : '<span class="card-more">Tap for detail ▸</span>')

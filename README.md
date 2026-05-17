@@ -29,19 +29,27 @@ source spreadsheet:
 
 ```bash
 pip install --user openpyxl
-python3 tools/convert_xlsx.py AI_Top_50_Public_Index_Tracker.xlsx               # Phase 1 (Top 25)
-python3 tools/convert_xlsx.py AI_Top_50_Public_Index_Tracker.xlsx --phase 2     # Phase 2 (Top 50)
-python3 tools/convert_xlsx.py AI_Top_50_Public_Index_Tracker.xlsx --deterministic  # frozen timestamp (clean diffs)
+SPINE=AI_Top_50_Public_Index_Tracker.xlsx
+VERT=AI_Top_50_Rebuilt_v4_with_vertical_column.xlsx
+python3 tools/convert_xlsx.py $SPINE --verticals $VERT                  # Phase 1 (Top 25)
+python3 tools/convert_xlsx.py $SPINE --verticals $VERT --phase 2        # Phase 2 (Top 50)
+python3 tools/convert_xlsx.py $SPINE --verticals $VERT --deterministic  # frozen timestamp (clean diffs)
+# (--verticals is auto-detected if a *vertical*.xlsx sits in the repo root)
 ```
 
 The converter prints a **DATA CHECK** summary (counts, tier distribution,
-enrichment matches, unrated/dropped rows) and exits non-zero on any structural
-problem (missing sheet/header, zero rows) or if an internal-process phrase would
-leak into a public narrative field.
+enrichment + vertical-match coverage, unrated/dropped rows) and exits non-zero
+on any structural problem (missing sheet/header, zero rows) or if an
+internal-process phrase would leak into a public narrative field.
 
-It reads three sheets: `Research Tracker` (the full ranked spine, public +
-private), `Public Index` (richer public-safe narrative for public companies,
-joined by company name), and `Methodology` (verbatim public methodology copy).
+It reads from two workbooks:
+- the spine workbook — `Research Tracker` (full ranked universe, public +
+  private), `Public Index` (richer public-safe narrative for public companies,
+  joined by company name), `Methodology` (verbatim public methodology copy);
+- the vertical-source workbook — **only** its `Company` + `DSG Prime Vertical`
+  columns (clean 14-vertical taxonomy), joined to the spine by normalised
+  company name (diacritic-folded, parenthetical-alias aware, with a small
+  explicit alias map). All of that workbook's internal columns are ignored.
 
 ## Security / data handling — IMPORTANT
 
@@ -71,8 +79,10 @@ the original illustrative spec:
    **Phase 1 = Rank 1–25, Phase 2 = Rank 1–50** (the composite rank).
 2. **Detail panel** uses the data's public-safe fields (Working assessment,
    Strongest signal, Key evidence, Signal gaps, Confidence, Market cap, …).
-3. **Sector** = the data's `Sector`, normalised into chart buckets (raw value
-   still shown). It is not the original spec's 14 "DSG Prime Verticals".
+3. **Vertical** = the clean **DSG Prime Vertical** column from the
+   vertical-source workbook (14-vertical taxonomy) — it drives the filter and
+   the maturity-by-vertical chart. The granular raw `Sector` is still shown in
+   each company's detail panel.
 
 Maturity-tier labels/definitions, scoring method, source models, and confidence
 levels are read verbatim from the spreadsheet's `Methodology` sheet.
@@ -88,7 +98,8 @@ assets/favicon.svg
 tools/convert_xlsx.py   # xlsx -> data.js (allow-list, sanitise, fail-loud)
 ```
 
-> Ephemeral environments: the raw `.xlsx` is git-ignored, so a fresh clone
-> won't contain it. The committed `data.js` keeps the deployed site fully
-> reproducible without the spreadsheet; re-upload the tracker only when you
-> need to regenerate (e.g. the Phase 2 cut).
+> Ephemeral environments: both source workbooks (`*.xlsx`) are git-ignored, so
+> a fresh clone won't contain them. The committed `data.js` keeps the deployed
+> site fully reproducible without the spreadsheets; re-upload the tracker **and**
+> the vertical-source workbook only when you need to regenerate (e.g. the
+> Phase 2 cut).

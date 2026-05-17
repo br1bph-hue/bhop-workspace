@@ -1,4 +1,4 @@
-/* Hand-rolled inline-SVG horizontal stacked bar: distribution sector x AI
+/* Hand-rolled inline-SVG horizontal stacked bar: distribution vertical x AI
    maturity tier. No chart library (CDNs blocked). Fluid via viewBox. */
 (function (A) {
   "use strict";
@@ -10,15 +10,15 @@
     var map = {};
     companies.forEach(function (c) {
       if (!c.tier) return; // unrated excluded from stacks (see caption)
-      var k = c.sectorBucket;
+      var k = c.vertical;
       (map[k] = map[k] || {}).total = (map[k] || {}).total || 0;
       map[k][c.tier] = (map[k][c.tier] || 0) + 1;
       map[k].total += 1;
     });
     var rows = Object.keys(map).map(function (s) {
-      return { sector: s, total: map[s].total, byTier: map[s] };
+      return { vertical: s, total: map[s].total, byTier: map[s] };
     }).sort(function (a, b) {
-      return b.total - a.total || a.sector.localeCompare(b.sector);
+      return b.total - a.total || a.vertical.localeCompare(b.vertical);
     });
     return { rows: rows, tiers: tiers };
   }
@@ -57,16 +57,16 @@
     s.rows.forEach(function (r, i) {
       var y = TOP + i * (BARH + GAP), x = X0;
       p.push('<text x="' + (GUT - 12) + '" y="' + (y + BARH / 2 + 4)
-        + '" class="c-label" text-anchor="end">' + esc(r.sector) + "</text>");
+        + '" class="c-label" text-anchor="end">' + esc(r.vertical) + "</text>");
       s.tiers.forEach(function (t) {
         var n = r.byTier[t] || 0;
         if (!n) return;
         var w = n * scale, m = tierMeta[t];
         p.push('<rect x="' + x + '" y="' + y + '" width="' + w + '" height="'
           + BARH + '" fill="' + esc(m.color) + '" class="c-seg" tabindex="0" '
-          + 'role="img" data-tip="' + esc(r.sector + " · T" + t + " "
+          + 'role="img" data-tip="' + esc(r.vertical + " · T" + t + " "
           + m.label + ": " + n + (n === 1 ? " company" : " companies"))
-          + '" aria-label="' + esc(r.sector + ", tier " + t + " " + m.label
+          + '" aria-label="' + esc(r.vertical + ", tier " + t + " " + m.label
           + ", " + n + (n === 1 ? " company" : " companies")) + '">');
         p.push("</rect>");
         if (w > 22) {
@@ -89,7 +89,7 @@
     container.innerHTML = legend + '<div class="chart-wrap"></div>'
       + '<p class="chart-cap">Bars show ranked companies with a determined '
       + 'maturity tier; unrated companies are excluded. Number at bar end = '
-      + 'sector total.</p><div class="chart-tip" role="status" aria-live="polite"></div>';
+      + 'vertical total.</p><div class="chart-tip" role="status" aria-live="polite"></div>';
     container.querySelector(".chart-wrap").innerHTML = p.join("");
 
     var tip = container.querySelector(".chart-tip");
