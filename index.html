@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Top 25: The Definitive Ranking of AI Maturity in Wholesale Distribution | Distribution Strategy Group</title>
+<meta name="description" content="Distribution Strategy Group's AI Top 25 ranks the wholesale distributors leading on AI deployment. Browse tier placement, deployed use cases, technology stack, and measurable outcomes by company and vertical.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="top-rail"></div>
+
+<header class="header">
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="brand-mark">DSG</div>
+      <div class="brand-text">
+        <div class="brand-title">Distribution Strategy Group</div>
+        <div class="brand-sub">2026 Research</div>
+      </div>
+    </div>
+    <div class="phase-badge" id="phaseBadge">PHASE 1 · TOP 25</div>
+  </div>
+  <div class="container header-title">
+    <h1>AI Top 25</h1>
+    <p class="subtitle">The Definitive Ranking of AI Maturity in Wholesale Distribution</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="stats" aria-label="Summary statistics">
+    <div class="stat">
+      <div class="stat-value" data-stat="total">—</div>
+      <div class="stat-label">Companies Ranked</div>
+    </div>
+    <div class="stat stat-red">
+      <div class="stat-value" data-stat="tier1">—</div>
+      <div class="stat-label">AI Leaders (Tier 1)</div>
+    </div>
+    <div class="stat stat-navy">
+      <div class="stat-value" data-stat="tier2">—</div>
+      <div class="stat-label">Active Adopters (Tier 2)</div>
+    </div>
+    <div class="stat stat-ice">
+      <div class="stat-value" data-stat="verticals">—</div>
+      <div class="stat-label">Industry Verticals</div>
+    </div>
+  </section>
+
+  <section class="filters" aria-label="Filters and sort">
+    <div class="filter-row">
+      <div class="filter-group">
+        <span class="filter-label">Tier</span>
+        <div class="toggle-group" id="tierToggles">
+          <button class="toggle tier1 active" data-tier="1">Tier 1</button>
+          <button class="toggle tier2 active" data-tier="2">Tier 2</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Ownership</span>
+        <div class="toggle-group" id="ownershipToggles">
+          <button class="toggle active" data-own="Public">Public</button>
+          <button class="toggle active" data-own="Private">Private</button>
+          <button class="toggle active" data-own="Employee-Owned">Employee-Owned</button>
+        </div>
+      </div>
+      <div class="filter-group flex-grow">
+        <span class="filter-label">Vertical</span>
+        <div class="select-wrap">
+          <button class="multi-select-button" id="verticalButton" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span id="verticalButtonLabel">All verticals</span>
+            <span class="chev">▾</span>
+          </button>
+          <div class="multi-select-menu" id="verticalMenu" role="listbox" aria-multiselectable="true"></div>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Sort</span>
+        <select id="sortSelect" class="sort-select">
+          <option value="tier">Tier (default)</option>
+          <option value="company">Company A–Z</option>
+          <option value="vertical">Vertical A–Z</option>
+        </select>
+      </div>
+      <div class="filter-group flex-grow">
+        <span class="filter-label">Search</span>
+        <input type="search" id="searchInput" class="search-input" placeholder="Search companies…">
+      </div>
+    </div>
+    <div class="filter-chips" id="filterChips"></div>
+    <div class="result-count" id="resultCount"></div>
+  </section>
+
+  <section class="table-section" aria-label="Company list">
+    <div class="table-wrap desktop-only">
+      <table class="company-table" id="companyTable">
+        <thead>
+          <tr>
+            <th class="col-tier sortable" data-sort="tier">Tier</th>
+            <th class="col-company sortable" data-sort="company">Company</th>
+            <th class="col-vertical sortable" data-sort="vertical">Vertical</th>
+            <th class="col-usecase">Key AI Deployment</th>
+            <th class="col-evidence sortable" data-sort="evidence">Evidence</th>
+            <th class="col-detail" aria-label="Detail"></th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+    <div class="card-grid mobile-only" id="cardGrid"></div>
+    <div class="empty-state" id="emptyState" hidden>
+      <p>No companies match these filters.</p>
+      <button class="link-button" id="clearAllEmpty">Clear all filters</button>
+    </div>
+  </section>
+
+  <section class="chart-section">
+    <h2>AI Maturity by Distribution Vertical</h2>
+    <p class="section-sub">Number of ranked companies by industry segment and tier placement.</p>
+    <div class="chart" id="verticalChart" role="img" aria-label="Stacked bar chart of companies by vertical and tier"></div>
+    <div class="legend">
+      <span class="legend-item"><span class="legend-swatch tier1"></span>Tier 1 · AI Leaders</span>
+      <span class="legend-item"><span class="legend-swatch tier2"></span>Tier 2 · Active Adopters</span>
+    </div>
+  </section>
+
+  <section class="methodology">
+    <h2>Methodology</h2>
+
+    <div class="methodology-grid">
+      <div class="dimensions">
+        <h3>Scoring Dimensions</h3>
+        <table class="dim-table">
+          <thead>
+            <tr><th>Dimension</th><th>Description</th><th>Weight</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Deployed Use Cases</td><td>Number and breadth of live AI applications by function</td><td><span class="weight-pill weight-high">High</span></td></tr>
+            <tr><td>Technology Stack Depth</td><td>AI platforms, vendors, and tools in active use</td><td><span class="weight-pill weight-high">High</span></td></tr>
+            <tr><td>Measurable Outcomes</td><td>Reported ROI, efficiency gains, margin improvements</td><td><span class="weight-pill weight-high">High</span></td></tr>
+            <tr><td>Executive Commitment</td><td>C-suite statements, investment announcements, org structure</td><td><span class="weight-pill weight-med">Medium</span></td></tr>
+            <tr><td>Evidence Quality</td><td>Source citations and verifiability of all claims</td><td><span class="weight-pill weight-med">Medium</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tiers">
+        <h3>Tier Definitions</h3>
+        <div class="tier-cards">
+          <div class="tier-card tier1">
+            <div class="tier-card-header">Tier 1 · AI Leaders</div>
+            <p>Multiple deployed use cases, dedicated AI teams, measurable ROI.</p>
+            <div class="tier-card-count" data-tier-count="1">— companies</div>
+          </div>
+          <div class="tier-card tier2">
+            <div class="tier-card-header">Tier 2 · Active Adopters</div>
+            <p>2+ deployed AI applications, growing investment.</p>
+            <div class="tier-card-count" data-tier-count="2">— companies</div>
+          </div>
+          <div class="tier-card tier3 muted">
+            <div class="tier-card-header">Tier 3 · Early-Stage</div>
+            <p>Pilot programs or single-function deployments.</p>
+            <div class="tier-card-count">Phase 2 · Fall 2026</div>
+          </div>
+          <div class="tier-card tier4 muted">
+            <div class="tier-card-header">Tier 4 · Exploratory</div>
+            <p>Stated AI interest, limited deployment evidence.</p>
+            <div class="tier-card-count">Phase 2 · Fall 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="methodology-note">Every data point sourced from public evidence, executive statements, vendor case studies, or direct validation. No surveys. No self-reporting. Full methodology in the AI Top 25 Report.</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-cta">
+      <a href="#download" class="btn btn-primary" id="downloadCta">Download the full AI Top 25 Report →</a>
+      <a href="mailto:operations@distributionstrategy.com?subject=AI%20Top%2025%20placement%20question" class="btn btn-ghost">Questions about your company's placement? Contact us →</a>
+    </div>
+    <p class="phase2-teaser">The full AI Top 50 drops Fall 2026. 28 more companies. The complete picture.</p>
+    <div class="footer-meta">
+      <span>© 2026 Distribution Strategy Group</span>
+      <span>·</span>
+      <span>DistributionStrategy.com</span>
+    </div>
+  </div>
+</footer>
+<div class="bottom-rail"></div>
+
+<script src="data/companies.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
