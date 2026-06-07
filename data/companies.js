@@ -245,7 +245,8 @@ window.AI_TOP_DATA = [
     "tech_stack": [
       "Azure",
       "Stibo STEP",
-      "IBM"
+      "IBM",
+      "Coveo"
     ],
     "profile": {
       "hq": null,
@@ -379,7 +380,9 @@ window.AI_TOP_DATA = [
     "outcomes": "Public outcomes are reported at the business level (not isolated to AI), including $13.9B online sales in 2025 and Spark delivering 50% revenue growth vs 2024, plus U.S.",
     "tech_stack": [
       "Azure",
-      "Dynamics 365"
+      "Dynamics 365",
+      "Sereact",
+      "Kardex"
     ],
     "profile": {
       "hq": "North Charleston/Charleston, South Carolina",
@@ -457,7 +460,8 @@ window.AI_TOP_DATA = [
     "leadership_signal": "No public signal found of an explicit AI strategy, AI vision statements, or executive quotes committing to AI; public messaging emphasizes longevity and customer service rather than AI (Behler-Young Company LinkedIn, HVAC Insider).",
     "outcomes": "No public signal found of quantified outcomes attributable to AI or analytics (e.g., productivity, service level, margin lift) in reviewed sources (Behler-Young website, Behler-Young Company LinkedIn).",
     "tech_stack": [
-      "Microsoft 365"
+      "Microsoft 365",
+      "Infor"
     ],
     "profile": {
       "hq": "Grand Rapids, Michigan",
@@ -542,7 +546,8 @@ window.AI_TOP_DATA = [
       "Google Cloud",
       "Oracle",
       "Optimizely",
-      "Stibo STEP"
+      "Stibo STEP",
+      "Coveo"
     ],
     "profile": {
       "hq": null,
@@ -694,13 +699,683 @@ window.AI_TOP_DATA = [
       "SAP",
       "Salesforce",
       "Power BI",
-      "Tableau"
+      "Tableau",
+      "Infor"
     ],
     "profile": {
       "hq": null,
       "revenue": "$80M",
       "employees": null,
       "summary": "Bostwick Braun is a Toledo, Ohio-based industrial distributor founded in 1855, serving manufacturing, construction, metalworking, and safety customers across the Midwest, with multiple operating companies under its industrial arm. Bostwick Braun About Us describes it as a regional industrial distributor and notes its 1855 founding date. A March 2024 announcement says Bostwick-Braun Industrial distributes ~125,000 SKUs from 13 warehouses in Ohio, Indiana, and Kentucky and is 100% employee-owned…"
+    }
+  },
+  {
+    "rank": 28,
+    "company": "Cardinal Health",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Medical Supplies",
+    "ownership": "Public",
+    "ticker": "CAH",
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "Cardinal Health has multi-year AI deployment across pharmaceutical distribution, specialty analytics, warehouse automation, and…",
+    "use_case_full": "Cardinal Health has multi-year AI deployment across pharmaceutical distribution, specialty analytics, warehouse automation, and customer-facing digital platforms. InteLogix on Palantir Foundry delivered $8.25M savings for hundreds of hospitals in three months; FourKites cognitive supply chain targets autonomous self-healing visibility; Specialty Networks/PPS Analytics adds NLP and continuous-learning analytics for 11,500 specialty providers; AI CoE established in 2021; active hiring includes Generative/Agentic AI Platform Engineer roles.",
+    "leadership_signal": "Cardinal Health has multi-year AI deployment across pharmaceutical distribution, specialty analytics, warehouse automation, and customer-facing digital platforms. InteLogix on Palantir Foundry delivered $8.25M savings for hundreds of hospitals in three months; FourKites cognitive supply chain targets autonomous self-healing visibility; Specialty Networks/PPS Analytics adds NLP…",
+    "outcomes": "Cardinal Health has multi-year AI deployment across pharmaceutical distribution, specialty analytics, warehouse automation, and customer-facing digital platforms.",
+    "tech_stack": [],
+    "profile": {
+      "hq": null,
+      "revenue": "$8.25M",
+      "employees": null,
+      "summary": "Cardinal Health has deployed enterprise-scale AI across pharmaceutical distribution and specialty analytics, with documented $8.25M customer savings from InteLogix and cognitive supply chain automation via FourKites."
+    }
+  },
+  {
+    "rank": 29,
+    "company": "Henry Schein",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Medical Supplies",
+    "ownership": "Public",
+    "ticker": "HSIC",
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "Henry Schein’s BOLD+1 plan explicitly targets AI across all three segments.",
+    "use_case_full": "Henry Schein’s BOLD+1 plan explicitly targets AI across all three segments. Production AI-enabled services include Detect AI with VideaHealth in 7,000+ practices, Voice Notes with AWS Bedrock showing 65–70% documentation-time reduction in pilots, Eligibility Pro with 191M checks in 2025, Digital Forms AI with 22M forms, Image Verify, and Claire support agent. IFS Cloud field-service deployment validates predictive-maintenance/field-service optimization across Europe and North America; Lucas Systems Jennifer AI has supported all five U.S. mega-centers with 99.94%+ pick accuracy. Veterinary claim should be corrected because Henry Schein Animal Health spun off as Covetrus in 2019.",
+    "leadership_signal": "Henry Schein’s BOLD+1 plan explicitly targets AI across all three segments. Production AI-enabled services include Detect AI with VideaHealth in 7,000+ practices, Voice Notes with AWS Bedrock showing 65–70% documentation-time reduction in pilots, Eligibility Pro with 191M checks in 2025, Digital Forms AI with 22M forms, Image Verify, and Claire support agent. IFS Cloud…",
+    "outcomes": "Henry Schein’s BOLD+1 plan explicitly targets AI across all three segments.",
+    "tech_stack": [
+      "AWS"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": "Henry Schein's AI is production-grade within its Henry Schein One dental software subsidiary via a natively embedded AWS GenAI workflow, but the distribution operations segment has not demonstrated equivalent AI deployment."
+    }
+  },
+  {
+    "rank": 30,
+    "company": "McKesson Corporation",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Medical Supplies",
+    "ownership": "Public",
+    "ticker": "MCK",
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "AI is deployed across fulfillment automation, inventory forecasting, drug-shortage prevention, patient-data analytics, contact-center…",
+    "use_case_full": "AI is deployed across fulfillment automation, inventory forecasting, drug-shortage prevention, patient-data analytics, contact-center automation, RxTS/prior authorization, and data infrastructure. KNAPP/Covariant robotics reduced human touches from 8 to 2; Ontada + Azure OpenAI processed 150M oncology documents with 75% processing-time reduction and 4x faster data access; Five9 IVA deflects 40,000+ calls/month with $2.2M annualized savings; active AI/GenAI hiring supports internal capability.",
+    "leadership_signal": "AI is deployed across fulfillment automation, inventory forecasting, drug-shortage prevention, patient-data analytics, contact-center automation, RxTS/prior authorization, and data infrastructure. KNAPP/Covariant robotics reduced human touches from 8 to 2; Ontada + Azure OpenAI processed 150M oncology documents with 75% processing-time reduction and 4x faster data access;…",
+    "outcomes": "AI is deployed across fulfillment automation, inventory forecasting, drug-shortage prevention, patient-data analytics, contact-center automation, RxTS/prior authorization, and data infrastructure.",
+    "tech_stack": [
+      "Azure",
+      "OpenAI"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": "McKesson delivers the clearest evidence of AI-driven operating model change on the index — a 75% reduction in warehouse human touches and chatbot automation handling 35%+ of prior authorization volume represent discrete Tier 4 signals in production."
+    }
+  },
+  {
+    "rank": 31,
+    "company": "Sysco Corporation",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Foodservice",
+    "ownership": "Public",
+    "ticker": "SYY",
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "Sysco has enterprise-scale commercial AI: AI360 deployed to 95%+ of roughly 6,000 sales consultants, dynamic pricing AI live in digital…",
+    "use_case_full": "Sysco has enterprise-scale commercial AI: AI360 deployed to 95%+ of roughly 6,000 sales consultants, dynamic pricing AI live in digital channels, generative AI for menu planning and trend detection, and $450M verified personalization revenue. Supply-chain AI includes ML forecasting at Sysco France with 15% accuracy gain across 21 warehouses, ML inventory smoothing references in the U.S., cloud WMS across 110 sites, and RPA in production. CIDO departure in April 2026 is an active governance risk.",
+    "leadership_signal": "Sysco has enterprise-scale commercial AI: AI360 deployed to 95%+ of roughly 6,000 sales consultants, dynamic pricing AI live in digital channels, generative AI for menu planning and trend detection, and $450M verified personalization revenue. Supply-chain AI includes ML forecasting at Sysco France with 15% accuracy gain across 21 warehouses, ML inventory smoothing references…",
+    "outcomes": "Sysco has enterprise-scale commercial AI: AI360 deployed to 95%+ of roughly 6,000 sales consultants, dynamic pricing AI live in digital channels, generative AI for menu planning and trend detection, and $450M verified personalization…",
+    "tech_stack": [],
+    "profile": {
+      "hq": null,
+      "revenue": "$450M",
+      "employees": null,
+      "summary": "Sysco has industrialized AI across its sales force via AI360, with 95%+ weekly adoption among 6,000+ consultants and $450M in documented personalization revenue — the strongest commercial AI adoption rate on the index."
+    }
+  },
+  {
+    "rank": 32,
+    "company": "US Foods",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Foodservice",
+    "ownership": "Public",
+    "ticker": "USFD",
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "US Foods has deployed AI across customer menu profitability, cost analytics, routing, ecommerce/search, sales enablement, demand…",
+    "use_case_full": "US Foods has deployed AI across customer menu profitability, cost analytics, routing, ecommerce/search, sales enablement, demand forecasting, and warehouse operations. Menu IQ launched Feb. 2026 with AI recipe upload and real-time P&L by dish; Descartes nationwide routing supports 6,500 daily routes and 2.3% delivery-efficiency gain; Where’s My Truck improved ETA accuracy 40%; MOXē AI search drove 3% conversion lift and 1.3M incremental cases/year; AWS Bedrock Automated Order Guide saved 32,000 hours, delivered 10x ROI, and cut proposals from 3–4 hours to 20 minutes for 3,300+ sellers.",
+    "leadership_signal": "US Foods has deployed AI across customer menu profitability, cost analytics, routing, ecommerce/search, sales enablement, demand forecasting, and warehouse operations. Menu IQ launched Feb. 2026 with AI recipe upload and real-time P&L by dish; Descartes nationwide routing supports 6,500 daily routes and 2.3% delivery-efficiency gain; Where’s My Truck improved ETA accuracy 40%;…",
+    "outcomes": "US Foods has deployed AI across customer menu profitability, cost analytics, routing, ecommerce/search, sales enablement, demand forecasting, and warehouse operations.",
+    "tech_stack": [
+      "AWS"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": "US Foods is building digital capabilities but has not publicly disclosed AI-specific use cases, governance, or outcomes that would differentiate it from general digital transformation."
+    }
+  },
+  {
+    "rank": 33,
+    "company": "Watsco",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "HVAC",
+    "ownership": "Public",
+    "ticker": "WSO",
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "Multiple deployed AI use cases across pricing, internal knowledge, customer-facing contractor support, customer service, onboarding,…",
+    "use_case_full": "Multiple deployed AI use cases across pricing, internal knowledge, customer-facing contractor support, customer service, onboarding, voicemail, inventory/demand planning, and ecommerce. Ask.Watsco has 2,100+ users; AL.watsco is customer-facing; pricing tech processed 266,000 supplier cost changes and 3.8M customer pricing record updates in 2025; FY2025 gross margin expansion of 120 bps and Q2 2025 expansion of 220 bps were attributed to pricing optimization technologies. Tier 3 with 12–18 month Tier 4 watch.",
+    "leadership_signal": "Multiple deployed AI use cases across pricing, internal knowledge, customer-facing contractor support, customer service, onboarding, voicemail, inventory/demand planning, and ecommerce. Ask.Watsco has 2,100+ users; AL.watsco is customer-facing; pricing tech processed 266,000 supplier cost changes and 3.8M customer pricing record updates in 2025; FY2025 gross margin expansion…",
+    "outcomes": "Multiple deployed AI use cases across pricing, internal knowledge, customer-facing contractor support, customer service, onboarding, voicemail, inventory/demand planning, and ecommerce.",
+    "tech_stack": [],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": "Watsco has delivered 200 basis points of transactional margin improvement from AI pricing optimization over five years, deployed both internal (Ask.Watsco) and customer-facing (AL.watsco) AI products, and is building toward autonomous pricing agents in 2026."
+    }
+  },
+  {
+    "rank": 34,
+    "company": "Parts Town",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Foodservice",
+    "ownership": "Private",
+    "ticker": null,
+    "confidence": "Medium",
+    "evidence_strength": "Moderate",
+    "evidence_dots": 2,
+    "use_case_summary": "1) PartsPredictor: Parts Town “rolled out” an AI tool that predicts frequently used OEM parts for a given equipment issue and displays a…",
+    "use_case_full": "1) PartsPredictor: Parts Town “rolled out” an AI tool that predicts frequently used OEM parts for a given equipment issue and displays a “Fix Rate,” based on “millions of actual service calls.” (Digital Commerce 360 on PartsPredictor) 2) AI-driven proactive live chat + “24/7 virtual assistants,” integrated into the website and mobile app, supporting part identification, order tracking, and connecting users to Parts Experts. (Parts Town AI chat launch)",
+    "leadership_signal": "Parts Town positions itself as a “technology innovator” and highlights “cutting-edge technology” and innovation as part of its operating model, but the general About page does not explicitly name an AI strategy. (Parts Town – About Us) The company states its AI-driven proactive chat is part of a broader “digital strategy” leveraging “data analytics, machine learning, and other…",
+    "outcomes": "Parts Town reports initial response times for the AI-driven chat were “40% faster than the industry average,” chat engagement “doubled,” and “36% of interactions” led to a sale.",
+    "tech_stack": [
+      "SAP S/4HANA",
+      "SAP",
+      "Google Cloud"
+    ],
+    "profile": {
+      "hq": "Addison, Illinois",
+      "revenue": null,
+      "employees": null,
+      "summary": "Parts Town is a private, technology-focused distributor of genuine OEM replacement parts serving foodservice equipment, residential appliance, and HVAC repair markets; it is part of Parts Town Unlimited (rebranded from PT Holdings). (Parts Town – About Us) Parts Town is headquartered in Addison, Illinois (Chicago suburb). (Parts Town – LinkedIn company page) The company reports employing “over 1,000 team members.” (Parts Town – About Us)"
+    }
+  },
+  {
+    "rank": 35,
+    "company": "Avnet",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Electronics & Technology",
+    "ownership": "Public",
+    "ticker": "AVT",
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "Avnet validates tracker claims across GenAI technical support, component lifecycle AI, infrastructure maturity, supply-chain forecasting,…",
+    "use_case_full": "Avnet validates tracker claims across GenAI technical support, component lifecycle AI, infrastructure maturity, supply-chain forecasting, and ecommerce/search. CIO Max Chan named RAG-based technical support as a 2025 deployed initiative; Avnet’s 2025 CIO 100 Award cites ML + GenAI across a 16M+ component catalog with consistent monthly revenue increase; AI-ready security/data pipeline doubled data at 15% lower cost; traditional AI predictive modeling is confirmed in logistics; advanced search and product recommendations are tied to the CIO 100 innovation.",
+    "leadership_signal": "Avnet validates tracker claims across GenAI technical support, component lifecycle AI, infrastructure maturity, supply-chain forecasting, and ecommerce/search. CIO Max Chan named RAG-based technical support as a 2025 deployed initiative; Avnet’s 2025 CIO 100 Award cites ML + GenAI across a 16M+ component catalog with consistent monthly revenue increase; AI-ready security/data…",
+    "outcomes": "Avnet validates tracker claims across GenAI technical support, component lifecycle AI, infrastructure maturity, supply-chain forecasting, and ecommerce/search.",
+    "tech_stack": [],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
+    }
+  },
+  {
+    "rank": 36,
+    "company": "CDW Corporation",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Electronics & Technology",
+    "ownership": "Public",
+    "ticker": "CDW",
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "Conversational AI on cdw.com for product discovery; AI embedded in presales tools and internal workflow agents; AI fluency training for…",
+    "use_case_full": "Conversational AI on cdw.com for product discovery; AI embedded in presales tools and internal workflow agents; AI fluency training for 15,000 coworkers; CTO Sanjay Sood custom AI using LLMs; published 2025 CDW AI Report; CFO: AI 'more pervasive than cloud.'",
+    "leadership_signal": null,
+    "outcomes": "Conversational AI on cdw.com for product discovery; AI embedded in presales tools and internal workflow agents; AI fluency training for 15,000 coworkers; CTO Sanjay Sood custom AI using LLMs; published 2025 CDW AI Report; CFO: AI 'more…",
+    "tech_stack": [],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": "CDW embeds AI across customer-facing product discovery, internal workflow automation, and presales intelligence while simultaneously advising 250,000 enterprise clients on AI adoption — a reinforcing dual role that positions CDW as both practitioner and authority."
+    }
+  },
+  {
+    "rank": 37,
+    "company": "McLane Company",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Foodservice",
+    "ownership": "Private",
+    "ticker": null,
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "Austin Technology Hub opened Aug.",
+    "use_case_full": "Austin Technology Hub opened Aug. 27, 2025, not 2026, with 100 IT&D staff across cyber, data, AI, and cloud engineering. AI leadership is centralized under CIDO Murat Genc, VP Data Analytics & AI Sid Kulkarni, and VP Retail CIDO Tanya Coutray. Job postings confirm GCP, Azure, Databricks, Microsoft Fabric, Snowflake, Kafka, GenAI and ML requirements. Use cases include route/network/inventory optimization, AI assistants for legal/HR/sales/customer service, and a next-gen customer portal MVP.",
+    "leadership_signal": "Austin Technology Hub opened Aug. 27, 2025, not 2026, with 100 IT&D staff across cyber, data, AI, and cloud engineering. AI leadership is centralized under CIDO Murat Genc, VP Data Analytics & AI Sid Kulkarni, and VP Retail CIDO Tanya Coutray. Job postings confirm GCP, Azure, Databricks, Microsoft Fabric, Snowflake, Kafka, GenAI and ML requirements. Use cases include…",
+    "outcomes": "Austin Technology Hub opened Aug.",
+    "tech_stack": [
+      "Databricks",
+      "Snowflake",
+      "Azure",
+      "Google Cloud"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
+    }
+  },
+  {
+    "rank": 38,
+    "company": "QXO Inc.",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Building Materials",
+    "ownership": "Public",
+    "ticker": "QXO",
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "All tracker evidence validated: CAIO Ashwin Rao appointment, CEO statement that AI will permeate demand forecasting/inventory/ecommerce,…",
+    "use_case_full": "All tracker evidence validated: CAIO Ashwin Rao appointment, CEO statement that AI will permeate demand forecasting/inventory/ecommerce, AI-driven lead generation and forecasting in investor materials, AI-powered pricing/quoting, $200M Beacon pricing leakage, double-digit productivity gains, inventory/logistics AI, and procurement bots. Critical update: Rao departed around Jan. 2025; AI function continued under SVP AI Subramanian Iyer and CTO Val Liborski, making leadership continuity the key validation question.",
+    "leadership_signal": "All tracker evidence validated: CAIO Ashwin Rao appointment, CEO statement that AI will permeate demand forecasting/inventory/ecommerce, AI-driven lead generation and forecasting in investor materials, AI-powered pricing/quoting, $200M Beacon pricing leakage, double-digit productivity gains, inventory/logistics AI, and procurement bots. Critical update: Rao departed around…",
+    "outcomes": "All tracker evidence validated: CAIO Ashwin Rao appointment, CEO statement that AI will permeate demand forecasting/inventory/ecommerce, AI-driven lead generation and forecasting in investor materials, AI-powered pricing/quoting, $200M…",
+    "tech_stack": [
+      "GAINS"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
+    }
+  },
+  {
+    "rank": 39,
+    "company": "RS Group",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Industrial",
+    "ownership": "Public",
+    "ticker": "RS1.L",
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "RS Group validates all tracker claims: Group AI Policy, AI Community, Google Cloud Vertex AI/NLP search, FY25 AI/ML digital-commerce…",
+    "use_case_full": "RS Group validates all tracker claims: Group AI Policy, AI Community, Google Cloud Vertex AI/NLP search, FY25 AI/ML digital-commerce materials, and Informatica AI-ready data. Google Cloud Vertex AI search is live across 27 websites; add-to-cart improved from 18.0% to 18.4%; Enterprise Data Platform runs ML over 100,000+ customer interactions; CDAO Miriam Vizvary hired Sept. 2024; dynamic pricing AI was trialed in North America; 50,000+ new sales opportunities identified through CRM. Below Tier 4 because pricing/inventory AI remains trial-stage and GenAI production use is not yet confirmed.",
+    "leadership_signal": "RS Group validates all tracker claims: Group AI Policy, AI Community, Google Cloud Vertex AI/NLP search, FY25 AI/ML digital-commerce materials, and Informatica AI-ready data. Google Cloud Vertex AI search is live across 27 websites; add-to-cart improved from 18.0% to 18.4%; Enterprise Data Platform runs ML over 100,000+ customer interactions; CDAO Miriam Vizvary hired Sept.…",
+    "outcomes": "RS Group validates all tracker claims: Group AI Policy, AI Community, Google Cloud Vertex AI/NLP search, FY25 AI/ML digital-commerce materials, and Informatica AI-ready data.",
+    "tech_stack": [
+      "Google Cloud"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
+    }
+  },
+  {
+    "rank": 40,
+    "company": "Rexel USA",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Electrical",
+    "ownership": "Public",
+    "ticker": "RXL.PA",
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "AI is live across quoting, order entry, chatbots, sales algorithms, pricing, and data/AI infrastructure.",
+    "use_case_full": "AI is live across quoting, order entry, chatbots, sales algorithms, pricing, and data/AI infrastructure. Rexel disclosed 50%+ U.S. quoting teams using AI tools and 65%+ U.S. inside sales teams using AI order entry. Parspec deployment spans all U.S. regions with 1,000+ users, 7,500+ quotes/month, 28% time-to-quote reduction, 52% submittal time savings, and 7.5% bid increase. Strong Tier 3 with isolated Tier 4 signals via Revalgo and agentic AI.",
+    "leadership_signal": "AI is live across quoting, order entry, chatbots, sales algorithms, pricing, and data/AI infrastructure. Rexel disclosed 50%+ U.S. quoting teams using AI tools and 65%+ U.S. inside sales teams using AI order entry. Parspec deployment spans all U.S. regions with 1,000+ users, 7,500+ quotes/month, 28% time-to-quote reduction, 52% submittal time savings, and 7.5% bid increase.…",
+    "outcomes": "AI is live across quoting, order entry, chatbots, sales algorithms, pricing, and data/AI infrastructure.",
+    "tech_stack": [],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
+    }
+  },
+  {
+    "rank": 41,
+    "company": "MSC Industrial Direct",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Industrial",
+    "ownership": "Public",
+    "ticker": "MSM",
+    "confidence": "Medium",
+    "evidence_strength": "Moderate",
+    "evidence_dots": 2,
+    "use_case_summary": "MSC has AI across sales plays, planning/procurement, demand/inventory, product taxonomy, chatbots, financial forecasting, marketing, and…",
+    "use_case_full": "MSC has AI across sales plays, planning/procurement, demand/inventory, product taxonomy, chatbots, financial forecasting, marketing, and opportunity identification. Proton.ai has been deployed since 2021 with 20x upsell lift and 13% conversion in vendor case evidence; leadership confirmed AI embedded into daily planning/procurement work and identified roughly $500M of growth opportunities through AI-driven analysis. Governance and proprietary capability signals are weaker than top peers.",
+    "leadership_signal": "MSC has AI across sales plays, planning/procurement, demand/inventory, product taxonomy, chatbots, financial forecasting, marketing, and opportunity identification. Proton.ai has been deployed since 2021 with 20x upsell lift and 13% conversion in vendor case evidence; leadership confirmed AI embedded into daily planning/procurement work and identified roughly $500M of growth…",
+    "outcomes": "MSC has AI across sales plays, planning/procurement, demand/inventory, product taxonomy, chatbots, financial forecasting, marketing, and opportunity identification.",
+    "tech_stack": [],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": "MSC Industrial has moved AI from pilot to embedded operations across pricing, demand forecasting, and sales — with Proton.ai generating documented upsell lift — but lacks disclosed VP-level AI ownership or quantified financial outcomes."
+    }
+  },
+  {
+    "rank": 42,
+    "company": "ScanSource",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Electronics & Technology",
+    "ownership": "Public",
+    "ticker": "SCSC",
+    "confidence": "Medium",
+    "evidence_strength": "Moderate",
+    "evidence_dots": 2,
+    "use_case_summary": "No public signal found of specific, in-production AI use cases at ScanSource (e.g., algorithmic pricing, demand forecasting, warehouse…",
+    "use_case_full": "No public signal found of specific, in-production AI use cases at ScanSource (e.g., algorithmic pricing, demand forecasting, warehouse vision, GenAI copilots) based on sources reviewed. (ScanSource)",
+    "leadership_signal": "ScanSource publicly frames its role as a technology distributor “connecting devices to the cloud” and emphasizes investing in capabilities and providing “actionable data insights” via its cloud platform, but I did not find explicit corporate AI strategy statements (e.g., “AI-first”) or an executive AI manifesto in the pages reviewed. (ScanSource About)",
+    "outcomes": "No public signal found of quantified business outcomes attributable to ScanSource’s internal AI deployments (e.g., productivity, margin, forecast accuracy) in sources reviewed. (ScanSource)",
+    "tech_stack": [
+      "SAP"
+    ],
+    "profile": {
+      "hq": "Greenville, South Carolina",
+      "revenue": null,
+      "employees": null,
+      "summary": "ScanSource is a public, hybrid technology distributor (NASDAQ: SCSC) focused on specialty technologies, connectivity, and cloud services, headquartered in Greenville, South Carolina, and positioning itself as “connecting devices to the cloud.” (ScanSource, ScanSource About)"
+    }
+  },
+  {
+    "rank": 43,
+    "company": "Arrow Electronics",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Electronics & Technology",
+    "ownership": "Public",
+    "ticker": "ARW",
+    "confidence": "Medium",
+    "evidence_strength": "Moderate",
+    "evidence_dots": 2,
+    "use_case_summary": "Arrow has commercial AI deployment across ECS and components-adjacent engineering services.",
+    "use_case_full": "Arrow has commercial AI deployment across ECS and components-adjacent engineering services. ArrowSphere AI, a GenAI-powered channel partner assistant, has been live since March 2024 and contributed to Arrow winning Microsoft 2025 Distributor Partner of the Year. AI-focused managed services including LLM management launched in North America in March 2025, and a Global AI Accelerator Program with AI Factory launched globally in April 2025. Core component-distribution AI claims are partially validated but need proprietary-vs-third-party clarification.",
+    "leadership_signal": "Arrow has commercial AI deployment across ECS and components-adjacent engineering services. ArrowSphere AI, a GenAI-powered channel partner assistant, has been live since March 2024 and contributed to Arrow winning Microsoft 2025 Distributor Partner of the Year. AI-focused managed services including LLM management launched in North America in March 2025, and a Global AI…",
+    "outcomes": "Arrow has commercial AI deployment across ECS and components-adjacent engineering services.",
+    "tech_stack": [],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": "Arrow Electronics has commercially deployed ArrowSphere AI for channel partners (earning Microsoft's top distributor award) and launched a global AI Accelerator Program, but internal distribution operations AI remains less documented."
+    }
+  },
+  {
+    "rank": 44,
+    "company": "Motion Industries",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Industrial",
+    "ownership": "Public",
+    "ticker": "GPC",
+    "confidence": "Medium",
+    "evidence_strength": "Moderate",
+    "evidence_dots": 2,
+    "use_case_summary": "Motion has AI across ecommerce search/recommendations, PIM/product classification, Motion Automation Intelligence customer offerings, and…",
+    "use_case_full": "Motion has AI across ecommerce search/recommendations, PIM/product classification, Motion Automation Intelligence customer offerings, and GPC-wide internal AI assistant ChatGPC. GenAI ecommerce reportedly represents 40% of Motion sales; AI product classification cuts onboarding time in half; Motion Ai provides robotics, machine vision/deep learning, IIoT, and predictive maintenance capabilities. Separation from GPC creates governance uncertainty and an opportunity to validate Motion-specific AI ownership.",
+    "leadership_signal": "Motion has AI across ecommerce search/recommendations, PIM/product classification, Motion Automation Intelligence customer offerings, and GPC-wide internal AI assistant ChatGPC. GenAI ecommerce reportedly represents 40% of Motion sales; AI product classification cuts onboarding time in half; Motion Ai provides robotics, machine vision/deep learning, IIoT, and predictive…",
+    "outcomes": "Motion has AI across ecommerce search/recommendations, PIM/product classification, Motion Automation Intelligence customer offerings, and GPC-wide internal AI assistant ChatGPC.",
+    "tech_stack": [],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
+    }
+  },
+  {
+    "rank": 45,
+    "company": "ABC Supply",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Building Materials",
+    "ownership": "Private",
+    "ticker": null,
+    "confidence": "Medium",
+    "evidence_strength": "Moderate",
+    "evidence_dots": 2,
+    "use_case_summary": "ABC Supply has multiple AI use cases across fleet, inventory, ecommerce, loss prevention, contractor integrations, and internal analytics.",
+    "use_case_full": "ABC Supply has multiple AI use cases across fleet, inventory, ecommerce, loss prevention, contractor integrations, and internal analytics. Calipsa AI video analytics covers 310 branch sites and reduced false alarms by 89%; internal data platform evidence includes 70+ data sources, 100+ datasets, 300TB data lake, and 1,200 daily users. Public language describes progression from traditional ML to GenAI and agentic workflows, but financial outcomes and formal AI governance remain unverified. Tier 3 with high-priority validation.",
+    "leadership_signal": "ABC Supply has multiple AI use cases across fleet, inventory, ecommerce, loss prevention, contractor integrations, and internal analytics. Calipsa AI video analytics covers 310 branch sites and reduced false alarms by 89%; internal data platform evidence includes 70+ data sources, 100+ datasets, 300TB data lake, and 1,200 daily users. Public language describes progression from…",
+    "outcomes": "ABC Supply has multiple AI use cases across fleet, inventory, ecommerce, loss prevention, contractor integrations, and internal analytics.",
+    "tech_stack": [],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
+    }
+  },
+  {
+    "rank": 46,
+    "company": "Lawson Products",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Industrial",
+    "ownership": "Public",
+    "ticker": "LAWS",
+    "confidence": "Medium",
+    "evidence_strength": "Moderate",
+    "evidence_dots": 2,
+    "use_case_summary": "Lawson manages 70,000+ SKUs across 6 DCs using GAINS, with a 30–40 percentage-point forecast accuracy improvement; GAINS X AI/ML is in…",
+    "use_case_full": "Lawson manages 70,000+ SKUs across 6 DCs using GAINS, with a 30–40 percentage-point forecast accuracy improvement; GAINS X AI/ML is in evaluation for next-stage deployment. SugarCRM + Mobileforce CPQ deployed to customer-facing teams with AI-assisted upsell, live SAP inventory checks, and proximity planning; DSGR earnings confirmed CRM went live mid-2024. Route optimization is in early rollout. Edge analytics claim is not publicly substantiated and should be reframed as supply-chain/DC-side analytics.",
+    "leadership_signal": "Lawson manages 70,000+ SKUs across 6 DCs using GAINS, with a 30–40 percentage-point forecast accuracy improvement; GAINS X AI/ML is in evaluation for next-stage deployment. SugarCRM + Mobileforce CPQ deployed to customer-facing teams with AI-assisted upsell, live SAP inventory checks, and proximity planning; DSGR earnings confirmed CRM went live mid-2024. Route optimization is…",
+    "outcomes": "Lawson manages 70,000+ SKUs across 6 DCs using GAINS, with a 30–40 percentage-point forecast accuracy improvement; GAINS X AI/ML is in evaluation for next-stage deployment.",
+    "tech_stack": [
+      "SAP",
+      "GAINS"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
+    }
+  },
+  {
+    "rank": 47,
+    "company": "UNFI",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Foodservice",
+    "ownership": "Public",
+    "ticker": "UNFI",
+    "confidence": "Medium",
+    "evidence_strength": "Moderate",
+    "evidence_dots": 2,
+    "use_case_summary": "RELEX AI/ML demand forecasting and inventory optimization is live across roughly half of the 49-DC network with full rollout targeted Aug.",
+    "use_case_full": "RELEX AI/ML demand forecasting and inventory optimization is live across roughly half of the 49-DC network with full rollout targeted Aug. 1, 2026; Symbotic and KNAPP automation are live across multiple facilities; Lean Daily Management is live in 36 of 49 DCs with throughput, on-time, shrink, and productivity gains; UNFI Media Network adds AI personalization and first-party retail analytics. Evidence supports integrated multi-function deployment, but SAP/RELEX/robotics integration and AI governance remain validation gaps.",
+    "leadership_signal": "RELEX AI/ML demand forecasting and inventory optimization is live across roughly half of the 49-DC network with full rollout targeted Aug. 1, 2026; Symbotic and KNAPP automation are live across multiple facilities; Lean Daily Management is live in 36 of 49 DCs with throughput, on-time, shrink, and productivity gains; UNFI Media Network adds AI personalization and first-party…",
+    "outcomes": "RELEX AI/ML demand forecasting and inventory optimization is live across roughly half of the 49-DC network with full rollout targeted Aug.",
+    "tech_stack": [
+      "SAP",
+      "GAINS"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
+    }
+  },
+  {
+    "rank": 48,
+    "company": "LINC Systems",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Industrial",
+    "ownership": "Private",
+    "ticker": null,
+    "confidence": "Medium",
+    "evidence_strength": "Moderate",
+    "evidence_dots": 2,
+    "use_case_summary": "No public signal found",
+    "use_case_full": "No public signal found",
+    "leadership_signal": "No public statements naming AI. Digital platform strategy via CEO Mick Beyer, VP Tech Joe Demarco quotes on scaling digitally. MDM 2025-06-11",
+    "outcomes": "Data analytics outcomes: 95% fill rate with 30% less inventory, closed 2 facilities.",
+    "tech_stack": [
+      "SAP",
+      "Azure",
+      "Oracle"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": "500",
+      "summary": "Privately held wholesale distributor of industrial fastening, packaging, tools, and MRO supplies. HQ: Westfield, IN. 201-500 employees, coast-to-coast US footprint with multiple DCs. PE-backed by Center Rock Capital (since 2018). LINC Systems, LinkedIn, Center Rock"
+    }
+  },
+  {
+    "rank": 49,
+    "company": "The Kendall Group",
+    "tier": 3,
+    "tier_label": "Early-Stage",
+    "vertical": "Electrical",
+    "ownership": "Private",
+    "ticker": null,
+    "confidence": "Medium",
+    "evidence_strength": "Thin",
+    "evidence_dots": 1,
+    "use_case_summary": "No public evidence of deployed production AI use cases found.",
+    "use_case_full": "No public evidence of deployed production AI use cases found.",
+    "leadership_signal": "No public statements, strategy docs, or executive quotes on AI found.",
+    "outcomes": "No cited metrics or outcomes found.",
+    "tech_stack": [],
+    "profile": {
+      "hq": null,
+      "revenue": "$400M",
+      "employees": "1,500",
+      "summary": "HQ Portage, MI. 100% employee-owned private company (~1,500 employees, $400M+ revenue est.). Wholesale distributor of electrical, PVF, automation, lighting, steam/instrumentation products across 70+ locations in 10+ states serving Midwest/Northeast/Southeast US. Divisions include Kendall Electric, Galloup, Great Lakes Automation, IRIS Industrial Analytics."
+    }
+  },
+  {
+    "rank": 50,
+    "company": "Core & Main",
+    "tier": 4,
+    "tier_label": "Exploratory",
+    "vertical": "Plumbing",
+    "ownership": "Public",
+    "ticker": "CNM",
+    "confidence": "Medium",
+    "evidence_strength": "Thin",
+    "evidence_dots": 1,
+    "use_case_summary": "No public signal found",
+    "use_case_full": "No public signal found",
+    "leadership_signal": "No public signal found",
+    "outcomes": "No public signal found",
+    "tech_stack": [
+      "Databricks",
+      "Snowflake",
+      "Azure",
+      "Power BI",
+      "Dynamics 365"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": "$7.4B",
+      "employees": "5,700",
+      "summary": "HQ St. Louis, MO; water, wastewater, storm drainage, fire protection distributor; ~370 branches US, ~5,700 employees, public NYSE:CNM, FY2024 sales $7.4B Core & Main, Wikipedia"
+    }
+  },
+  {
+    "rank": 51,
+    "company": "Turtle & Hughes",
+    "tier": 4,
+    "tier_label": "Exploratory",
+    "vertical": "Electrical",
+    "ownership": "Private",
+    "ticker": null,
+    "confidence": "High",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "Infor AI dynamic pricing is in production with $700K incremental revenue, +1.3% gross margin, $500K profit margin improvement, and 98%…",
+    "use_case_full": "Infor AI dynamic pricing is in production with $700K incremental revenue, +1.3% gross margin, $500K profit margin improvement, and 98% faster pricing decisions in four months; concept-to-live was 12 weeks. AI inventory reorder points are live/in expansion, Infor CloudSuite on AWS and Amazon SageMaker are confirmed, and Infor Velocity Suite adds GenAI, OCR, RPA, and process mining roadmap. Normalized to DSG Tier 2 because evidence is strong but still concentrated in defined workflows and vendor-enabled ERP extensions.",
+    "leadership_signal": "Infor AI dynamic pricing is in production with $700K incremental revenue, +1.3% gross margin, $500K profit margin improvement, and 98% faster pricing decisions in four months; concept-to-live was 12 weeks. AI inventory reorder points are live/in expansion, Infor CloudSuite on AWS and Amazon SageMaker are confirmed, and Infor Velocity Suite adds GenAI, OCR, RPA, and process…",
+    "outcomes": "Infor AI dynamic pricing is in production with $700K incremental revenue, +1.3% gross margin, $500K profit margin improvement, and 98% faster pricing decisions in four months; concept-to-live was 12 weeks. AI inventory reorder points are…",
+    "tech_stack": [
+      "AWS",
+      "Infor"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
+    }
+  },
+  {
+    "rank": 52,
+    "company": "Brenntag North America",
+    "tier": 4,
+    "tier_label": "Exploratory",
+    "vertical": "Chemicals",
+    "ownership": "Public",
+    "ticker": "BNR.DE",
+    "confidence": "Medium",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "Global Brenntag evidence is strong: EUR 350M DiDEX program, AI sales/pricing impact claims, Salesforce Agentforce, ServiceNow AI, Knowde…",
+    "use_case_full": "Global Brenntag evidence is strong: EUR 350M DiDEX program, AI sales/pricing impact claims, Salesforce Agentforce, ServiceNow AI, Knowde AI-PIM, AWS backbone, and global AI demand forecasting across 600+ sites. North America evidence confirms Brenntag Connect live in the US and regional digital transformation commitment, but NA-specific AI deployment KPIs, Agentforce launch status, demand forecasting coverage, and regional AI leadership remain unconfirmed.",
+    "leadership_signal": "Global Brenntag evidence is strong: EUR 350M DiDEX program, AI sales/pricing impact claims, Salesforce Agentforce, ServiceNow AI, Knowde AI-PIM, AWS backbone, and global AI demand forecasting across 600+ sites. North America evidence confirms Brenntag Connect live in the US and regional digital transformation commitment, but NA-specific AI deployment KPIs, Agentforce launch…",
+    "outcomes": "Global Brenntag evidence is strong: EUR 350M DiDEX program, AI sales/pricing impact claims, Salesforce Agentforce, ServiceNow AI, Knowde AI-PIM, AWS backbone, and global AI demand forecasting across 600+ sites. North America evidence…",
+    "tech_stack": [
+      "Salesforce",
+      "AWS",
+      "ServiceNow"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
+    }
+  },
+  {
+    "rank": 53,
+    "company": "Würth Industry North America",
+    "tier": 4,
+    "tier_label": "Exploratory",
+    "vertical": "Industrial",
+    "ownership": "Private",
+    "ticker": null,
+    "confidence": "Medium",
+    "evidence_strength": "Moderate",
+    "evidence_dots": 2,
+    "use_case_summary": "Stage 2 Flag moved from Maybe to Yes.",
+    "use_case_full": "Stage 2 Flag moved from Maybe to Yes. WINA has a signed five-year exclusive commercial agreement with Dot Ai to integrate AI-driven asset tracking, predictive analytics, and automated decision-making into CPS kanban inventory solutions; the product is live on WINA’s domain and WINA is named in Dot Ai public financial disclosures as a strategic anchor partner. COO Jeff Schmitt also publicly moderated an AI roundtable at Manifest 2025. Maturity remains Tier 2 because evidence is customer-facing/product-layer only, with no quantified WINA customer outcomes or confirmed internal AI deployment.",
+    "leadership_signal": "Stage 2 Flag moved from Maybe to Yes. WINA has a signed five-year exclusive commercial agreement with Dot Ai to integrate AI-driven asset tracking, predictive analytics, and automated decision-making into CPS kanban inventory solutions; the product is live on WINA’s domain and WINA is named in Dot Ai public financial disclosures as a strategic anchor partner. COO Jeff Schmitt…",
+    "outcomes": "Stage 2 Flag moved from Maybe to Yes.",
+    "tech_stack": [],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
+    }
+  },
+  {
+    "rank": 54,
+    "company": "Veritiv Operating Company",
+    "tier": 4,
+    "tier_label": "Exploratory",
+    "vertical": "Industrial",
+    "ownership": "Private",
+    "ticker": null,
+    "confidence": "Medium",
+    "evidence_strength": "Strong",
+    "evidence_dots": 3,
+    "use_case_summary": "Pactum AI autonomous supplier negotiation is in production with roughly 100+ suppliers in beta/early deployment and supplier…",
+    "use_case_full": "Pactum AI autonomous supplier negotiation is in production with roughly 100+ suppliers in beta/early deployment and supplier favorability/completion metrics; AWS demand forecasting data lake has been operational since 2021; C-suite ownership of Advanced Analytics & AI sits with CSTO Dan Calderwood; active GenAI/NLP/recommendation/search data science roles and a CMO-led AI Transformation Lab signal expansion. ROI, governance, and production depth remain validation gaps.",
+    "leadership_signal": "Pactum AI autonomous supplier negotiation is in production with roughly 100+ suppliers in beta/early deployment and supplier favorability/completion metrics; AWS demand forecasting data lake has been operational since 2021; C-suite ownership of Advanced Analytics & AI sits with CSTO Dan Calderwood; active GenAI/NLP/recommendation/search data science roles and a CMO-led AI…",
+    "outcomes": "Pactum AI autonomous supplier negotiation is in production with roughly 100+ suppliers in beta/early deployment and supplier favorability/completion metrics; AWS demand forecasting data lake has been operational since 2021; C-suite…",
+    "tech_stack": [
+      "AWS",
+      "Pactum"
+    ],
+    "profile": {
+      "hq": null,
+      "revenue": null,
+      "employees": null,
+      "summary": null
     }
   }
 ];

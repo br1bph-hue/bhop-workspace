@@ -12,8 +12,9 @@
   ];
 
   // ---------- State ----------
+  const ALL_TIERS = [1, 2, 3, 4];
   const state = {
-    tiers: new Set([1, 2]),
+    tiers: new Set(ALL_TIERS),
     ownerships: new Set(['Public', 'Private', 'Employee-Owned']),
     verticals: new Set(), // empty = all
     search: '',
@@ -99,14 +100,17 @@
 
   function renderStats() {
     document.querySelector('[data-stat="total"]').textContent = DATA.length;
-    document.querySelector('[data-stat="tier1"]').textContent = DATA.filter(c => c.tier === 1).length;
-    document.querySelector('[data-stat="tier2"]').textContent = DATA.filter(c => c.tier === 2).length;
+    ALL_TIERS.forEach(t => {
+      const el = document.querySelector(`[data-stat="tier${t}"]`);
+      if (el) el.textContent = DATA.filter(c => c.tier === t).length;
+    });
     const verticalsPresent = new Set(DATA.map(c => c.vertical));
-    document.querySelector('[data-stat="verticals"]').textContent = verticalsPresent.size;
-    const t1 = document.querySelector('[data-tier-count="1"]');
-    const t2 = document.querySelector('[data-tier-count="2"]');
-    if (t1) t1.textContent = `${DATA.filter(c => c.tier === 1).length} companies`;
-    if (t2) t2.textContent = `${DATA.filter(c => c.tier === 2).length} companies`;
+    const vEl = document.querySelector('[data-stat="verticals"]');
+    if (vEl) vEl.textContent = verticalsPresent.size;
+    ALL_TIERS.forEach(t => {
+      const card = document.querySelector(`[data-tier-count="${t}"]`);
+      if (card) card.textContent = `${DATA.filter(c => c.tier === t).length} companies`;
+    });
   }
 
   function renderTable() {
@@ -239,7 +243,7 @@
       </div>
 
       <div class="detail-cta">
-        <a href="#download">Read full profile in the AI Top 25 Report →</a>
+        <a href="#download">Read full profile in the AI Top 50 Report →</a>
       </div>
     `;
 
@@ -269,8 +273,12 @@
     filterChips.innerHTML = '';
     const chips = [];
     // tier
-    if (state.tiers.size === 1) {
-      chips.push({ label: `Tier ${Array.from(state.tiers)[0]} only`, remove: () => { state.tiers = new Set([1, 2]); syncToggles(); } });
+    if (state.tiers.size < ALL_TIERS.length) {
+      const selected = ALL_TIERS.filter(t => state.tiers.has(t));
+      chips.push({
+        label: selected.length === 1 ? `Tier ${selected[0]} only` : `Tiers: ${selected.join(', ')}`,
+        remove: () => { state.tiers = new Set(ALL_TIERS); syncToggles(); }
+      });
     }
     // ownership
     const allOwnerships = ['Public', 'Private', 'Employee-Owned'];
@@ -319,7 +327,7 @@
   }
 
   function clearAll() {
-    state.tiers = new Set([1, 2]);
+    state.tiers = new Set(ALL_TIERS);
     state.ownerships = new Set(['Public', 'Private', 'Employee-Owned']);
     state.verticals = new Set();
     state.search = '';
@@ -333,28 +341,29 @@
   function renderChart() {
     const chartEl = $('#verticalChart');
     chartEl.innerHTML = '';
-    // Group by vertical
     const buckets = {};
     DATA.forEach(c => {
-      if (!buckets[c.vertical]) buckets[c.vertical] = { tier1: 0, tier2: 0 };
-      if (c.tier === 1) buckets[c.vertical].tier1 += 1;
-      else if (c.tier === 2) buckets[c.vertical].tier2 += 1;
+      if (!buckets[c.vertical]) buckets[c.vertical] = { 1: 0, 2: 0, 3: 0, 4: 0 };
+      buckets[c.vertical][c.tier] += 1;
     });
     const rows = Object.entries(buckets)
-      .map(([v, b]) => ({ vertical: v, ...b, total: b.tier1 + b.tier2 }))
+      .map(([v, b]) => ({ vertical: v, t1: b[1], t2: b[2], t3: b[3], t4: b[4], total: b[1] + b[2] + b[3] + b[4] }))
       .sort((a, b) => b.total - a.total);
     const maxTotal = Math.max(1, ...rows.map(r => r.total));
 
     rows.forEach(r => {
       const row = document.createElement('div');
       row.className = 'chart-row';
-      const t1Pct = (r.tier1 / maxTotal) * 100;
-      const t2Pct = (r.tier2 / maxTotal) * 100;
+      const seg = (n, klass, label) => n > 0
+        ? `<div class="bar-seg ${klass}" style="width:${(n / maxTotal) * 100}%" title="${n} ${label}">${n}</div>`
+        : '';
       row.innerHTML = `
         <div class="label">${escapeHtml(r.vertical)}</div>
         <div class="bar-track">
-          ${r.tier1 > 0 ? `<div class="bar-seg tier1" style="width:${t1Pct}%" title="${r.tier1} Tier 1">${r.tier1}</div>` : ''}
-          ${r.tier2 > 0 ? `<div class="bar-seg tier2" style="width:${t2Pct}%" title="${r.tier2} Tier 2">${r.tier2}</div>` : ''}
+          ${seg(r.t1, 'tier1', 'Tier 1')}
+          ${seg(r.t2, 'tier2', 'Tier 2')}
+          ${seg(r.t3, 'tier3', 'Tier 3')}
+          ${seg(r.t4, 'tier4', 'Tier 4')}
         </div>
         <div class="total">${r.total}</div>
       `;
