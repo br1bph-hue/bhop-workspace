@@ -1,0 +1,6 @@
+question,expected_answer_summary,source_title,source_timestamp_or_section,answerable,question_type,notes
+What did Jane Doe say about tariff impacts on pricing?,She said distributors should expect 5-8% cost increases and renegotiate supplier contracts quarterly,Tariffs and the Supply Chain,14:32,yes,quote,Example — replace with a real question
+Which episodes discuss warehouse automation?,Episodes 4 and 9 cover warehouse automation in depth,Distribution Insights (multiple),,yes,multi-source,Tests answers that draw on more than one transcript
+What is the company's revenue forecast for 2027?,,,,no,not-in-corpus,The app must answer "not found" — never guess
+,,,,,,
+,,,,,,

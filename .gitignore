@@ -3,6 +3,8 @@
 *.xlsx
 *.xls
 *.csv
+# Exception: empty CSV templates for the transcript Q&A project (no real data).
+!docs/templates/*.csv
 
 # Python
 __pycache__/
